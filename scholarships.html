@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Іменні стипендії — Поступ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">🎓</span> Поступ</a>
+    <nav class="main-nav">
+      <a href="students.html">Вступники</a>
+      <a href="scholarships.html" class="active">Іменні стипендії</a>
+      <a href="how-it-works.html">Як це працює</a>
+      <a href="admin.html">Адмінка</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-primary btn-sm" href="#create">Заснувати стипендію</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Стипендії з іменем</div>
+        <h2>Іменні та цільові стипендії</h2>
+        <p class="sub">Благодійник сам вигадує назву та критерії: пам'яті близької людини, від компанії, для певної професії чи громади. Платформа знаходить отримувачів і щомісяця переказує кошти через університет.</p>
+      </div>
+    </div>
+    <div class="sch-grid" id="sch-list"></div>
+  </div>
+</section>
+
+<section class="section" id="create" style="padding-top:0">
+  <div class="container">
+    <div class="escrow-band">
+      <h2>Заснуйте власну стипендію</h2>
+      <p style="margin-top:8px;max-width:70ch">Назва — ваша. Критерії — ваші. Адміністрування, пошук і верифікація отримувачів, виплати через університети та звітність — наші.</p>
+      <div class="escrow-flow" style="margin-top:26px">
+        <div class="escrow-node"><div class="t">1. Назва та критерії</div><div class="d">Наприклад: «Стипендія родини Шевчуків — для майбутніх вчителів з Донеччини».</div></div>
+        <div class="escrow-arrow">➔</div>
+        <div class="escrow-node"><div class="t">2. Фонд стипендії</div><div class="d">Разовий внесок або регулярні поповнення. Мінімальний фонд — 36 000 ₴ (пів року по 6 000 ₴).</div></div>
+        <div class="escrow-arrow">➔</div>
+        <div class="escrow-node"><div class="t">3. Отримувачі та звіти</div><div class="d">Ми відбираємо кандидатів за вашими критеріями, ви затверджуєте. Щосеместру — звіт про успішність.</div></div>
+      </div>
+      <div style="margin-top:26px">
+        <button class="btn btn-accent" onclick="openModal('📝','Заявка на стипендію (демо)','У робочій версії тут відкриється форма: назва стипендії, критерії відбору, розмір і тривалість виплат, спосіб поповнення фонду. Команда платформи зв\'яжеться протягом 2 робочих днів.')">Подати заявку на заснування</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-note" style="border:none;margin:0;padding:0">
+      <span>© 2026 БФ «Поступ» · Прототип — усі персонажі та збори вигадані</span>
+      <span><a href="index.html">На головну</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>initScholarships();</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Поступ — крок до вступу. Цільові збори на навчання</title>
+<meta name="description" content="Поступ — крок до вступу. Платформа, де благодійники цільово фінансують навчання талановитих вступників в українські університети. Кошти передаються напряму навчальному закладу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">🎓</span> Поступ</a>
+    <nav class="main-nav">
+      <a href="students.html">Вступники</a>
+      <a href="scholarships.html">Іменні стипендії</a>
+      <a href="how-it-works.html">Як це працює</a>
+      <a href="admin.html">Адмінка</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-ghost btn-sm" href="how-it-works.html#students">Я вступник</a>
+      <a class="btn btn-primary btn-sm" href="students.html">Підтримати ➔</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Поступ — крок до вступу</div>
+      <h1>Талант знайшовся.<br>Допоможіть йому <em>вступити</em>.</h1>
+      <p class="lead">Поступ — платформа цільових зборів на навчання в українських університетах.
+        Ви обираєте, кого підтримати: конкретну людину, майбутню професію, улюблений виш або власний критерій.
+        Кошти надходять <b>напряму університету</b>, а не на картку.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="students.html">Обрати вступника</a>
+        <a class="btn btn-light" href="scholarships.html">Заснувати іменну стипендію</a>
+      </div>
+      <div class="hero-trust">
+        <span>🔒 Ескроу-рахунок банку-партнера</span>
+        <span>✔ Верифіковані профілі та оцінки</span>
+        <span>📊 Публічні звіти про вступ</span>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="mini-label">Історія успіху цього тижня</div>
+        <div id="hero-student"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="stats-band">
+    <div class="stat-tile"><div class="val" id="stat-raised">—</div><div class="lbl">зібрано на навчання</div><div class="delta">↑ 12% за місяць</div></div>
+    <div class="stat-tile"><div class="val" id="stat-students">—</div><div class="lbl">верифікованих вступників</div><div class="delta">↑ 3 нових цього тижня</div></div>
+    <div class="stat-tile"><div class="val" id="stat-donors">—</div><div class="lbl">доброчинців</div><div class="delta">↑ 89 за місяць</div></div>
+    <div class="stat-tile"><div class="val" id="stat-scholarships">—</div><div class="lbl">іменних стипендій</div><div class="delta">↑ 1 нова</div></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Кому потрібна підтримка зараз</div>
+        <h2>Вступна кампанія — 2026</h2>
+        <p class="sub">Кожен профіль перевірено: особа, результати НМТ, документи та рекомендації підтверджені командою платформи.</p>
+      </div>
+      <a class="btn btn-ghost" href="students.html">Усі вступники ➔</a>
+    </div>
+    <div class="cards-grid" id="featured"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Прозорість понад усе</div>
+        <h2>Гроші не торкаються карток — лише рахунків університетів</h2>
+      </div>
+    </div>
+    <div class="escrow-band">
+      <h2>Як рухаються кошти</h2>
+      <p style="margin-top:8px;max-width:70ch">Ми не переказуємо гроші студентам. Пожертви акумулюються на цільовому ескроу-рахунку і розблоковуються тільки після наказу про зарахування — напряму на рахунок навчального закладу.</p>
+      <div class="escrow-flow">
+        <div class="escrow-node"><div class="t">💛 Благодійник</div><div class="d">Обирає мету: людину, професію, виш або власний критерій. Разово чи підпискою.</div></div>
+        <div class="escrow-arrow">➔</div>
+        <div class="escrow-node"><div class="t">🏦 Ескроу-рахунок</div><div class="d">Кошти зберігаються на цільовому рахунку банку-партнера до моменту зарахування.</div></div>
+        <div class="escrow-arrow">➔</div>
+        <div class="escrow-node"><div class="t">🏛️ Університет</div><div class="d">Після наказу про зарахування платформа переказує кошти на рахунок закладу — за контракт, гуртожиток, стипендію.</div></div>
+      </div>
+      <p style="margin-top:22px;font-size:13.5px">Якщо вступ не відбувся — благодійник обирає: повернути кошти чи переспрямувати їх іншому вступнику.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Чотири кроки</div>
+        <h2>Як це працює</h2>
+      </div>
+      <a class="btn btn-ghost" href="how-it-works.html">Детальніше ➔</a>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Вступник створює профіль</h3><p>Мотиваційний лист, відеовізитка, оцінки НМТ, перемоги на олімпіадах, творчі доробки та рекомендації.</p></div>
+      <div class="step"><div class="num">2</div><h3>Платформа верифікує</h3><p>Перевіряємо особу, документи, результати та рекомендації. Публікуємо тільки підтверджені профілі.</p></div>
+      <div class="step"><div class="num">3</div><h3>Благодійник обирає мету</h3><p>Конкретна людина, професія, університет, соціальний критерій — або власна іменна стипендія.</p></div>
+      <div class="step"><div class="num">4</div><h3>Кошти йдуть у виш</h3><p>Після зарахування — переказ напряму університету. Вступник публічно звітує про навчання щосеместру.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta-split">
+      <div class="cta-box donor">
+        <h3>💛 Я хочу підтримати</h3>
+        <p>Оберіть вступника, професію чи виш — або заснуйте стипендію з власною назвою. Від 200 ₴ разово чи підпискою. Ви бачитимете, як ваш студент навчається.</p>
+        <a class="btn btn-primary" href="students.html">Знайти свого студента</a>
+      </div>
+      <div class="cta-box student">
+        <h3>🎓 Я вступаю в університет</h3>
+        <p>Створіть профіль, розкажіть свою історію, додайте досягнення. Верифікація безплатна. Комісія платформи — лише 1% на адміністрування.</p>
+        <a class="btn btn-accent" href="how-it-works.html#students">Створити профіль</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="index.html" style="color:#fff"><span class="logo-mark">🎓</span> Поступ</a>
+        <p style="margin-top:12px;font-size:13.5px;max-width:34ch"><b style="color:#fff">Поступ — крок до вступу.</b><br>Неприбуткова платформа цільового фінансування освіти. Працюємо на грантах та адміністративній комісії 1%.</p>
+      </div>
+      <div><h4>Платформа</h4>
+        <a href="students.html">Вступники</a><a href="scholarships.html">Іменні стипендії</a><a href="how-it-works.html">Як це працює</a>
+      </div>
+      <div><h4>Довіра</h4>
+        <a href="how-it-works.html#escrow">Ескроу та банк-партнер</a><a href="how-it-works.html#verification">Верифікація профілів</a><a href="how-it-works.html#reports">Звітність</a>
+      </div>
+      <div><h4>Контакти</h4>
+        <a href="mailto:hello@postup.demo">hello@postup.demo</a><a href="admin.html">Кабінет адміністратора</a>
+      </div>
+    </div>
+    <div class="footer-note">
+      <span>© 2026 БФ «Поступ» · Прототип для демонстрації — усі персонажі та збори вигадані</span>
+      <span>Зроблено з 💙💛 в Україні</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>initHome();</script>
+</body>
+</html>

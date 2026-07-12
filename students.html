@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вступники — Поступ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">🎓</span> Поступ</a>
+    <nav class="main-nav">
+      <a href="students.html" class="active">Вступники</a>
+      <a href="scholarships.html">Іменні стипендії</a>
+      <a href="how-it-works.html">Як це працює</a>
+      <a href="admin.html">Адмінка</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-ghost btn-sm" href="how-it-works.html#students">Я вступник</a>
+      <a class="btn btn-primary btn-sm" href="scholarships.html">Заснувати стипендію</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Каталог</div>
+        <h2>Оберіть, кого підтримати</h2>
+        <p class="sub">Фільтруйте за професією, університетом або соціальним критерієм — підтримка ветеранів, ВПО, дітей захисників, людей з інвалідністю та інших.</p>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="filters-row">
+        <div class="field"><label>Пошук</label><input id="f-q" type="text" placeholder="Ім'я, місто, спеціальність…"></div>
+        <div class="field"><label>Галузь</label><select id="f-field"></select></div>
+        <div class="field"><label>Університет</label><select id="f-uni"></select></div>
+        <div class="field"><label>Соціальний критерій</label><select id="f-cat"></select></div>
+        <button class="btn btn-light" id="f-reset">Скинути</button>
+      </div>
+    </div>
+
+    <div class="result-count" id="count"></div>
+    <div class="cards-grid" id="catalog"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-note" style="border:none;margin:0;padding:0">
+      <span>© 2026 БФ «Поступ» · Прототип — усі персонажі та збори вигадані</span>
+      <span><a href="index.html">На головну</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>initCatalog();</script>
+</body>
+</html>

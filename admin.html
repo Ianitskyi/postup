@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Адмін-панель — Поступ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+</head>
+<body class="admin-body">
+
+<div class="admin-layout">
+
+  <aside class="admin-side">
+    <a class="logo" href="index.html"><span class="logo-mark">🎓</span> Поступ · Адмін</a>
+    <nav>
+      <button class="active" onclick="showView('dashboard', this)">📊 Дашборд</button>
+      <button onclick="showView('applications', this)">🗂️ Заявки <span class="badge-count" id="badge-apps">0</span></button>
+      <button onclick="showView('campaigns', this)">🎯 Збори</button>
+      <button onclick="showView('donations', this)">💛 Донати</button>
+      <button onclick="showView('scholarships', this)">🏅 Стипендії</button>
+      <button onclick="showView('payouts', this)">🏛️ Виплати вишам</button>
+    </nav>
+    <div class="side-foot">
+      Демо-режим · дані вигадані<br>
+      <a href="#" onclick="resetState();return false">Скинути демо-дані</a> · <a href="index.html">На сайт ➔</a>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+
+    <!-- ДАШБОРД -->
+    <section id="view-dashboard">
+      <div class="admin-head">
+        <div><h1>Дашборд</h1><div class="sub">Стан платформи · вступна кампанія 2026</div></div>
+        <a class="btn btn-light btn-sm" href="index.html">Переглянути сайт ➔</a>
+      </div>
+      <div class="kpi-grid" id="kpis"></div>
+      <div class="awrap">
+        <h2>Надходження пожертв</h2>
+        <div class="sub">Помісячно, тис. грн · останні 12 місяців</div>
+        <div class="chart-box" id="chart"></div>
+      </div>
+      <div class="awrap">
+        <h2>Найближчі до цілі збори</h2>
+        <div class="sub">Топ-5 за відсотком виконання</div>
+        <div id="dash-campaigns"></div>
+      </div>
+    </section>
+
+    <!-- ЗАЯВКИ -->
+    <section id="view-applications" style="display:none">
+      <div class="admin-head">
+        <div><h1>Заявки на модерації</h1><div class="sub">Профіль публікується лише після проходження всіх перевірок</div></div>
+      </div>
+      <div class="admin-note">💡 Кнопка «Опублікувати» активна завжди у демо, але в робочій версії вимагатиме проходження всіх пунктів верифікації.</div>
+      <div class="awrap"><div id="app-list"></div></div>
+    </section>
+
+    <!-- ЗБОРИ -->
+    <section id="view-campaigns" style="display:none">
+      <div class="admin-head">
+        <div><h1>Активні збори</h1><div class="sub">Усі кампанії вступників з прогресом</div></div>
+      </div>
+      <div class="awrap"><div id="camp-list"></div></div>
+    </section>
+
+    <!-- ДОНАТИ -->
+    <section id="view-donations" style="display:none">
+      <div class="admin-head">
+        <div><h1>Донати</h1><div class="sub">Останні надходження на ескроу-рахунок</div></div>
+      </div>
+      <div class="awrap tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Дата</th><th>Благодійник</th><th>Призначення</th><th>Тип</th><th class="num">Сума</th><th>Статус</th></tr></thead>
+          <tbody id="don-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- СТИПЕНДІЇ -->
+    <section id="view-scholarships" style="display:none">
+      <div class="admin-head">
+        <div><h1>Іменні стипендії</h1><div class="sub">Фонди, засновані благодійниками</div></div>
+        <button class="btn btn-primary btn-sm" onclick="openModal('🏅','Нова стипендія (демо)','У робочій версії тут відкриється майстер створення стипендії: назва, критерії, розмір, тривалість, спосіб поповнення фонду.')">+ Створити стипендію</button>
+      </div>
+      <div class="awrap tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Назва</th><th>Засновник</th><th>Тип</th><th class="num">Щомісяця/особу</th><th class="num">Отримувачів</th><th class="num">Фонд</th></tr></thead>
+          <tbody id="sch-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ВИПЛАТИ -->
+    <section id="view-payouts" style="display:none">
+      <div class="admin-head">
+        <div><h1>Виплати університетам</h1><div class="sub">Перекази з ескроу-рахунку на рахунки навчальних закладів</div></div>
+      </div>
+      <div class="admin-note">🏦 Виплата створюється автоматично після підтвердження наказу про зарахування і підписується двома адміністраторами.</div>
+      <div class="awrap tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Дата</th><th>Університет</th><th>Студент / програма</th><th>Призначення</th><th class="num">Сума</th><th>Статус</th><th>Платіжка</th></tr></thead>
+          <tbody id="pay-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
