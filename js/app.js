@@ -6,13 +6,18 @@ function avatarStyle(s) {
   return `background: linear-gradient(135deg, hsl(${s.hue} 62% 46%), hsl(${(s.hue + 40) % 360} 70% 58%))`;
 }
 
+function avatarHtml(s, cls) {
+  const inner = s.photo ? `<img src="${s.photo}" alt="Портрет: ${s.name}">` : s.initials;
+  return `<div class="avatar ${cls || ""}" style="${avatarStyle(s)}">${inner}</div>`;
+}
+
 function studentCard(s) {
   const p = pct(s);
   const st = STATUS_META[s.status];
   return `
   <a class="student-card" href="student.html?id=${s.id}">
     <div class="card-top">
-      <div class="avatar" style="${avatarStyle(s)}">${s.initials}</div>
+      ${avatarHtml(s)}
       <div class="who">
         <div class="name">${s.name} ${s.verified ? '<span class="vbadge" title="Профіль верифіковано">✔</span>' : ""}</div>
         <div class="meta">${s.age} р. · ${s.city}</div>
@@ -107,7 +112,7 @@ function initProfile() {
 
   document.getElementById("p-hero").innerHTML = `
     <div class="profile-top">
-      <div class="avatar lg" style="${avatarStyle(s)}">${s.initials}</div>
+      ${avatarHtml(s, "lg")}
       <div class="who">
         <h1>${s.name} ${s.verified ? '<span class="vbadge" title="Верифіковано">✔</span>' : ""}</h1>
         <div class="meta">${s.age} років · ${s.city} · вступає: <b>${s.specialty}, ${s.university}</b></div>
@@ -194,7 +199,13 @@ function renderDonatePanel(s) {
 
       <button class="btn btn-accent" style="width:100%;margin-top:16px" onclick="donate('${s.id}')">Підтримати</button>
 
-      <div class="donate-note">🔒 <span>Кошти зараховуються на цільовий ескроу-рахунок банку-партнера і передаються <b>напряму університету</b> після наказу про зарахування. Якщо вступ не відбудеться — повне повернення або переспрямування за вашим вибором.</span></div>
+      <div class="guarantee">
+        <div class="gi">🛡️</div>
+        <div>
+          <b>Гарантія повернення коштів</b>
+          <span>Гроші зберігаються на рахунку банку-партнера й передаються <u>напряму університету</u>. Якщо вступ не відбудеться або збір не завершиться — ви обираєте: <u>100% повернення</u> або переспрямування іншому вступнику. Кошти ніколи не залишаються у платформи.</span>
+        </div>
+      </div>
     </div>`;
   /* Кнопка без відмінювання, простіше і граматично безпечно */
   const btn = document.querySelector(".donate-panel .btn-accent");
