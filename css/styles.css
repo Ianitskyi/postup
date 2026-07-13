@@ -309,6 +309,20 @@ a:hover { text-decoration: underline; }
 }
 .tip-row input { margin-top: 2px; accent-color: var(--brand); cursor: pointer; }
 
+/* Вибір благодійника: що робити, якщо збір не завершиться */
+.fallback-choice {
+  background: var(--surface-2); border-radius: 12px; padding: 12px 14px; margin-top: 14px;
+}
+.fallback-choice .fc-label {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--ink-2); margin-bottom: 8px;
+}
+.fallback-choice label {
+  display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; color: var(--ink);
+  padding: 5px 0; cursor: pointer;
+}
+.fallback-choice input { margin-top: 3px; accent-color: var(--brand); cursor: pointer; }
+
 /* Гарантія повернення — головний блок довіри */
 .guarantee {
   display: flex; gap: 12px; align-items: flex-start;

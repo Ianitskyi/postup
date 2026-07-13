@@ -184,12 +184,18 @@ function renderDonatePanel(s) {
         <button onclick="setDonateType('monthly', this)">Підписка на студента</button>
       </div>
       <div class="subscribe-hint" id="sub-hint">
-        Щомісячна підтримка: стипендія, проживання та харчування. ${s.monthlySupporters} людей уже підписані. Скасувати можна будь-коли.
+        Щомісячна підтримка: стипендія, проживання та харчування. Ви отримуватимете звіти про навчання щосеместру. ${s.monthlySupporters} людей уже підписані, скасувати можна будь-коли.
       </div>
 
       <div class="amount-grid">
         ${[200, 500, 1000, 2000, 5000, 10000].map(a => `
           <button class="amount-btn ${a === 500 ? "active" : ""}" onclick="setAmount(${a}, this)">${UAH.format(a)} ₴</button>`).join("")}
+      </div>
+
+      <div class="fallback-choice">
+        <div class="fc-label">Якщо збір не завершиться або вступ не відбудеться:</div>
+        <label><input type="radio" name="fb-choice" value="refund" checked> Повернути мені 100% пожертви</label>
+        <label><input type="radio" name="fb-choice" value="redirect"> Передати іншому вступнику на мій вибір</label>
       </div>
 
       <label class="tip-row">
@@ -203,7 +209,7 @@ function renderDonatePanel(s) {
         <div class="gi">🛡️</div>
         <div>
           <b>Гарантія повернення коштів</b>
-          <span>Гроші зберігаються на рахунку банку-партнера й передаються <u>напряму університету</u>. Якщо вступ не відбудеться або збір не завершиться — ви обираєте: <u>100% повернення</u> або переспрямування іншому вступнику. Кошти ніколи не залишаються у платформи.</span>
+          <span>Гроші зберігаються на рахунку банку-партнера й передаються <u>напряму університету</u>. Що робити з пожертвою, якщо збір не завершиться, — <u>ви щойно обрали вище</u>, і це рішення можна змінити будь-коли в особистому кабінеті. Кошти ніколи не залишаються у платформи.</span>
         </div>
       </div>
     </div>`;
@@ -239,14 +245,18 @@ function donate(studentId) {
   const tipOn = document.getElementById("tip-check")?.checked;
   const tip = tipOn ? Math.round(donateAmount * 0.05) : 0;
   const tipMsg = tip ? ` Окремо ${UAH.format(tip)} ₴ піде на роботу платформи — дякуємо!` : "";
+  const fb = document.querySelector('input[name="fb-choice"]:checked')?.value;
+  const fbMsg = fb === "redirect"
+    ? " Ваш вибір збережено: якщо збір не завершиться, кошти буде передано іншому вступнику за вашим вибором."
+    : " Ваш вибір збережено: якщо збір не завершиться, ви отримаєте 100% повернення.";
 
   const s = DB.students.find(x => x.id === studentId);
   openModal(
     donateType === "monthly" ? "💛" : "🎉",
     donateType === "monthly" ? "Підписку оформлено (демо)" : "Дякуємо за підтримку! (демо)",
     donateType === "monthly"
-      ? `У робочій версії тут відбудеться оформлення щомісячного платежу ${UAH.format(donateAmount)} ₴ через платіжний сервіс. Кошти щомісяця надходитимуть на цільовий рахунок для ${s.name}.${tipMsg}`
-      : `У робочій версії тут відкриється сторінка оплати. ${UAH.format(donateAmount)} ₴ буде зараховано на ескроу-рахунок збору для ${s.name}.${tipMsg} Прогрес на сторінці вже оновлено.`
+      ? `У робочій версії тут відбудеться оформлення щомісячного платежу ${UAH.format(donateAmount)} ₴ через платіжний сервіс. Кошти щомісяця надходитимуть на цільовий рахунок для ${s.name}.${fbMsg}${tipMsg}`
+      : `У робочій версії тут відкриється сторінка оплати. ${UAH.format(donateAmount)} ₴ буде зараховано на ескроу-рахунок збору для ${s.name}.${fbMsg}${tipMsg} Прогрес на сторінці вже оновлено.`
   );
   setTimeout(() => { initProfile(); }, 400);
 }
