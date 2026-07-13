@@ -209,7 +209,7 @@ function renderDonatePanel(s) {
         <div class="gi">🛡️</div>
         <div>
           <b>Гарантія повернення коштів</b>
-          <span>Гроші зберігаються на рахунку банку-партнера й передаються <u>напряму університету</u>. Що робити з пожертвою, якщо збір не завершиться, — <u>ви щойно обрали вище</u>, і це рішення можна змінити будь-коли в особистому кабінеті. Кошти ніколи не залишаються у платформи.</span>
+          <span>Гроші зберігаються на рахунку банку-партнера й передаються <u>напряму університету</u>. Що робити з пожертвою, якщо збір не завершиться, — <u>ви щойно обрали вище</u>, і це рішення можна змінити будь-коли. Повернення — <u>справді 100%</u>: комісію 1% не утримуємо, банківські комісії покриває платформа.</span>
         </div>
       </div>
     </div>`;
@@ -270,12 +270,17 @@ function initScholarships() {
           <h3>${sc.name}</h3>
           <div class="founder">Засновник: ${sc.founder}</div>
         </div>
-        <span class="chip ${sc.type === "Корпоративна" ? "brand" : "accent"}">${sc.type}</span>
+        <div class="chip-row" style="justify-content:flex-end;margin:0">
+          <span class="chip ${sc.mode === "once" ? "accent" : "brand"}">${sc.mode === "once" ? "🎯 Разова · на вступ" : "📆 Регулярна · на навчання"}</span>
+          <span class="chip">${sc.type}</span>
+        </div>
       </div>
       <div class="criteria">🎯 ${sc.criteria}</div>
       <p style="font-size:14px;color:var(--ink-2)">${sc.description}</p>
       <div class="sch-nums">
-        <div class="n"><b>${fmtUAH(sc.monthly)}</b><span>щомісяця / особу</span></div>
+        ${sc.mode === "once"
+          ? `<div class="n"><b>${fmtUAH(sc.amount)}</b><span>одноразово / особу</span></div>`
+          : `<div class="n"><b>${fmtUAH(sc.monthly)}</b><span>щомісяця / особу</span></div>`}
         <div class="n"><b>${sc.recipients}</b><span>отримувачів</span></div>
         <div class="n"><b>${fmtUAH(sc.capital)}</b><span>фонд стипендії</span></div>
       </div>
