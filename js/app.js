@@ -28,6 +28,7 @@ function studentCard(s) {
       <p class="excerpt">${s.excerpt}</p>
       <div class="chip-row">
         <span class="status-pill ${st.cls}">${st.label}</span>
+        ${isPartnerUni(s.university) ? '<span class="chip good">🤝 Виш-партнер</span>' : ""}
         ${s.categories.map(c => `<span class="chip">${c}</span>`).join("")}
       </div>
     </div>
@@ -118,6 +119,7 @@ function initProfile() {
         <div class="meta">${s.age} років · ${s.city} · вступає: <b>${s.specialty}, ${s.university}</b></div>
         <div class="chip-row">
           <span class="status-pill ${st.cls}">● ${s.statusLabel}</span>
+          ${isPartnerUni(s.university) ? '<span class="chip good" title="Виш підтверджує зарахування і приймає виплати за прямою процедурою">🤝 Виш-партнер</span>' : ""}
           ${s.categories.map(c => `<span class="chip">${c}</span>`).join("")}
         </div>
       </div>
