@@ -76,7 +76,7 @@ Postup is a **non-profit organization** (charitable foundation). Sources:
 3. **Voluntary donor contribution** "for the platform's work" at checkout (the GoFundMe model).
 4. **Service fees from companies** for administering corporate scholarships.
 
-For comparison: administrative costs of charitable platforms worldwide are 5–12% of turnover. We keep it at 1%. Financial reports are published quarterly.
+For comparison: administrative costs of charitable platforms worldwide are 5–12% of turnover. We keep it at 1%. Financial reports are published annually.
 
 ## Data protection
 

@@ -6,7 +6,7 @@
 <title>Університетам — Поступ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=2">
+<link rel="stylesheet" href="css/styles.css?v=3">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
 </head>
 <body>
@@ -16,9 +16,8 @@
     <a class="logo" href="index.html"><span class="logo-mark">🎓</span> Поступ</a>
     <nav class="main-nav">
       <a href="students.html">Вступники</a>
-      <a href="scholarships.html">Іменні стипендії</a>
+      <a href="scholarships.html">Стипендії</a>
       <a href="how-it-works.html">Як це працює</a>
-      <a href="faq.html">FAQ</a>
       <a href="universities.html" class="active">Університетам</a>
       <a href="admin.html">Адмінка</a>
     </nav>
@@ -108,8 +107,8 @@
   </div>
 </footer>
 
-<script src="js/data.js?v=2"></script>
-<script src="js/app.js?v=2"></script>
+<script src="js/data.js?v=3"></script>
+<script src="js/app.js?v=3"></script>
 <script>
 document.getElementById("partner-list").innerHTML =
   DB.partnerUniversities.map(u => `<span class="chip good" style="font-size:13px;padding:8px 14px">✓ ${u}</span>`).join("");
