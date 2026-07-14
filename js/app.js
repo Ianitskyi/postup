@@ -195,9 +195,10 @@ function renderDonatePanel(s) {
       </div>
 
       <div class="fallback-choice">
-        <div class="fc-label">Якщо збір не завершиться або вступ не відбудеться:</div>
-        <label><input type="radio" name="fb-choice" value="refund" checked> Повернути мені 100% пожертви</label>
-        <label><input type="radio" name="fb-choice" value="redirect"> Передати іншому вступнику на мій вибір</label>
+        <div class="fc-label">Якщо кошти не знадобляться на контракт (не вступив, недозбір, пройшов на бюджет чи отримав інший грант) — розставте пріоритети:</div>
+        <div class="fb-row"><select class="fb-pr" data-key="stipend" onchange="fbReorder(this)" data-prev="1"><option selected>1</option><option>2</option><option>3</option></select><span>Залишити цьому студенту — щомісячною стипендією на навчання (житло, харчування, матеріали)</span></div>
+        <div class="fb-row"><select class="fb-pr" data-key="redirect" onchange="fbReorder(this)" data-prev="2"><option>1</option><option selected>2</option><option>3</option></select><span>Передати іншому вступнику на мій вибір</span></div>
+        <div class="fb-row"><select class="fb-pr" data-key="refund" onchange="fbReorder(this)" data-prev="3"><option>1</option><option>2</option><option selected>3</option></select><span>Повернути мені — 100%, без жодних комісій</span></div>
       </div>
 
       <label class="tip-row">
@@ -211,7 +212,7 @@ function renderDonatePanel(s) {
         <div class="gi">🛡️</div>
         <div>
           <b>Гарантія повернення коштів</b>
-          <span>Гроші зберігаються на рахунку банку-партнера й передаються <u>напряму університету</u>. Що робити з пожертвою, якщо збір не завершиться, — <u>ви щойно обрали вище</u>, і це рішення можна змінити будь-коли. Повернення — <u>справді 100%</u>: комісію 1% не утримуємо, банківські комісії покриває платформа.</span>
+          <span>Гроші зберігаються на рахунку банку-партнера й передаються <u>напряму університету</u>. Якщо кошти не знадобляться — недозбір, бюджет, інший грант — спрацюють <u>пріоритети, які ви щойно розставили</u>; змінити їх можна будь-коли. Повернення — <u>справді 100%</u>: комісію 1% не утримуємо, банківські комісії покриває платформа. <a href="faq.html">Детальніше у FAQ</a></span>
         </div>
       </div>
     </div>`;
@@ -247,10 +248,17 @@ function donate(studentId) {
   const tipOn = document.getElementById("tip-check")?.checked;
   const tip = tipOn ? Math.round(donateAmount * 0.05) : 0;
   const tipMsg = tip ? ` Окремо ${UAH.format(tip)} ₴ піде на роботу платформи — дякуємо!` : "";
-  const fb = document.querySelector('input[name="fb-choice"]:checked')?.value;
-  const fbMsg = fb === "redirect"
-    ? " Ваш вибір збережено: якщо збір не завершиться, кошти буде передано іншому вступнику за вашим вибором."
-    : " Ваш вибір збережено: якщо збір не завершиться, ви отримаєте 100% повернення.";
+  const FB_LABELS = {
+    stipend: "стипендія цьому студенту",
+    redirect: "інший вступник",
+    refund: "повернення 100%"
+  };
+  const prio = [...document.querySelectorAll(".fallback-choice select")]
+    .map(s => ({ k: s.dataset.key, v: +s.value }))
+    .sort((a, b) => a.v - b.v);
+  const fbMsg = prio.length
+    ? ` Ваші пріоритети на випадок, якщо кошти не знадобляться на контракт: ${prio.map((p, i) => `${i + 1}) ${FB_LABELS[p.k]}`).join("; ")}.`
+    : "";
 
   const s = DB.students.find(x => x.id === studentId);
   openModal(
@@ -291,6 +299,32 @@ function initScholarships() {
         Доєднатися до фонду</button>
     </div>`).join("");
 }
+
+/* Пріоритети: обмін значеннями, щоб не було двох однакових */
+function fbReorder(changed) {
+  const sels = [...document.querySelectorAll(".fallback-choice select")];
+  const dup = sels.find(s => s !== changed && s.value === changed.value);
+  if (dup) dup.value = changed.dataset.prev;
+  sels.forEach(s => (s.dataset.prev = s.value));
+}
+
+/* ---------- Банер cookies ---------- */
+(function cookieNotice() {
+  let seen = false;
+  try { seen = !!localStorage.getItem("postup-cookie-ok"); } catch { seen = true; }
+  if (seen) return;
+  const bar = document.createElement("div");
+  bar.className = "cookie-bar";
+  bar.innerHTML = `
+    <span>🍪 Ми не використовуємо рекламних трекерів — лише технічне збереження налаштувань у вашому браузері.
+      <a href="policies.html#cookies">Політика cookies</a></span>
+    <button class="btn btn-sm btn-accent">Зрозуміло</button>`;
+  bar.querySelector("button").addEventListener("click", () => {
+    try { localStorage.setItem("postup-cookie-ok", "1"); } catch {}
+    bar.remove();
+  });
+  document.body.appendChild(bar);
+})();
 
 /* ---------- Модалка ---------- */
 function openModal(emoji, title, text) {

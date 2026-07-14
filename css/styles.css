@@ -323,6 +323,43 @@ a:hover { text-decoration: underline; }
   padding: 5px 0; cursor: pointer;
 }
 .fallback-choice input { margin-top: 3px; accent-color: var(--brand); cursor: pointer; }
+.fb-row { display: flex; gap: 10px; align-items: flex-start; padding: 5px 0; font-size: 13px; color: var(--ink); }
+.fb-row select {
+  width: 52px; flex: none; padding: 6px 4px; text-align: center; font: 700 13px var(--font);
+  border: 1.5px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer;
+}
+.fb-row select:focus { outline: none; border-color: var(--brand); }
+
+/* Банер cookies */
+.cookie-bar {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 90;
+  background: #141a30; color: #c6cdf1; border-radius: 14px; padding: 13px 18px;
+  display: flex; gap: 14px; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  box-shadow: var(--shadow-lg); font-size: 13.5px; max-width: 900px; margin: 0 auto;
+}
+.cookie-bar a { color: #fff; }
+
+/* FAQ */
+.faq details {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: var(--shadow); padding: 0 22px; margin-bottom: 12px;
+}
+.faq summary {
+  cursor: pointer; font-weight: 700; font-size: 15.5px; padding: 17px 0;
+  list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-size: 22px; color: var(--brand); font-weight: 600; flex: none; }
+.faq details[open] summary::after { content: "–"; }
+.faq .a { padding: 0 0 18px; color: var(--ink-2); font-size: 14.5px; line-height: 1.6; }
+.faq .a p + p { margin-top: 8px; }
+.faq h2.group { margin: 30px 0 14px; font-size: 20px; letter-spacing: -.01em; }
+
+/* Політики */
+.policy h2 { font-size: 22px; margin: 34px 0 12px; letter-spacing: -.01em; }
+.policy h3 { font-size: 16px; margin: 18px 0 6px; }
+.policy p, .policy li { color: var(--ink-2); font-size: 14.5px; line-height: 1.65; }
+.policy ul { padding-left: 22px; margin: 8px 0; }
 
 /* Гарантія повернення — головний блок довіри */
 .guarantee {
