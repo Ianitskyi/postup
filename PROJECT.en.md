@@ -32,6 +32,10 @@ Postup integrates **discovery, verification, and transactions** into a single sy
 - Support can be one-time or recurring, and donors can establish a named or targeted scholarship.
 - **Funds are transferred directly to the educational institution** through a controlled, transparent mechanism facilitated by a partner bank — ensuring proper use and building trust.
 
+## How we're different
+
+We don't compete with existing funds (Believe in Yourself, the Pinchuk Foundation, and others) — they run their own closed programs with a limited number of scholars and fixed selection criteria. Postup is an open platform: any donor can choose any applicant by any criterion, and any applicant can apply regardless of which specific program they'd fit. What sets us apart from general crowdfunding platforms (GoFundMe, Spilnokosht) is the guarantee that funds are used as intended — via escrow and direct payment to the university, not a transfer to a card. We see existing funds as potential partners rather than competitors — the platform could administer their scholarship programs.
+
 ## How the money moves
 
 We **do not transfer money to students' cards.**
@@ -50,6 +54,8 @@ If the funds are **not needed for tuition** — the applicant did not enroll, th
 2. Redirect it to another applicant of the donor's choice;
 3. Refund the donor — **100% of the amount**, with no platform fee withheld; banking fees are covered by the platform.
 
+For recurring scholarships (subscriptions, named scholarships for the whole duration of studies), continuing payments each semester is conditional on passing that semester. Academic failure or expulsion suspends payments — unused funds follow the same donor priorities.
+
 ## What a donor can do
 
 - **One-time support for admission** — covers the first-year tuition contract.
@@ -62,6 +68,10 @@ If the funds are **not needed for tuition** — the applicant did not enroll, th
 - Every profile has a public admission timeline.
 - One-time donors receive a final report (enrollment order + payment confirmation); subscribers receive per-semester study reports.
 - Year after year, a reputational history of the student accumulates — from application to diploma.
+
+## Metrics we report on
+
+Published annually: number of verified applicants, campaign-to-enrollment conversion rate, share of funds that reached the university (target 99%), subscriber retention, and the share of scholars who passed their semester. First real figures will follow the pilot with 3–5 applicants.
 
 ## For universities
 
