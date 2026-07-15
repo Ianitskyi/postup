@@ -139,10 +139,11 @@ function initProfile() {
     </div>
     <div class="panel">
       <h2>Досягнення та аргументи</h2>
+      <p class="sub-note">Кожен пункт перевірено командою платформи за офіційними джерелами перед публікацією профілю. Самі документи не публікуються — це б розкрило приватні дані.</p>
       <div class="ach-list">
         ${s.achievements.map(a => `
           <div class="ach"><div class="ico">${a.icon}</div>
-            <div><b>${a.title}</b><span>${a.detail}</span></div></div>`).join("")}
+            <div><b>${a.title} <span class="verified-mark" title="Перевірено командою платформи">✔ перевірено</span></b><span>${a.detail}</span></div></div>`).join("")}
       </div>
     </div>
     <div class="panel">
@@ -160,7 +161,12 @@ function initProfile() {
             <div class="tl-body"><b>${t.title}</b><span>${t.date}</span></div>
           </li>`).join("")}
       </ul>
-    </div>`;
+    </div>
+    ${s.thankYou ? `
+    <div class="panel">
+      <h2>🙏 Подяка донорам</h2>
+      <p class="letter" style="font-style:italic">«${s.thankYou}»</p>
+    </div>` : ""}`;
 
   renderDonatePanel(s);
 }

@@ -283,6 +283,11 @@ a:hover { text-decoration: underline; }
 .ach .ico { font-size: 20px; flex: none; }
 .ach b { font-size: 14.5px; display: block; }
 .ach span { font-size: 13px; color: var(--muted); }
+.verified-mark {
+  font-size: 10.5px; font-weight: 700; color: var(--good); background: var(--good-soft);
+  padding: 2px 7px; border-radius: 99px; vertical-align: middle; margin-left: 4px; white-space: nowrap;
+}
+.sub-note { font-size: 13px; color: var(--muted); margin: -6px 0 12px; }
 
 .endorse { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; }
 .endorse + .endorse { margin-top: 16px; }
