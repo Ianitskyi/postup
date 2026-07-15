@@ -77,7 +77,7 @@ a:hover { text-decoration: underline; }
   background: linear-gradient(135deg, var(--brand) 0%, #5a76f0 55%, var(--accent) 130%);
   display: grid; place-items: center; color: #fff; font-size: 16px;
 }
-.main-nav { display: flex; gap: 4px; margin-left: 8px; }
+.main-nav { display: flex; gap: 4px; margin-left: auto; }
 .main-nav a {
   padding: 9px 14px; border-radius: 10px; color: var(--ink-2);
   font-weight: 600; font-size: 14.5px; text-decoration: none !important;
@@ -534,8 +534,8 @@ a:hover { text-decoration: underline; }
 }
 @media (max-width: 640px) {
   .cards-grid, .steps, .stats-band, .filters-row, .filters-row-6, .kpi-grid, .hero-paths, .hero-paths-3 { grid-template-columns: 1fr; }
-  .main-nav { display: none; }
-  .header-cta .btn-ghost { display: none; }
+  .main-nav { gap: 2px; }
+  .main-nav a { padding: 7px 8px; font-size: 12.5px; }
   .camp-row { grid-template-columns: 1fr 80px; }
   .camp-row .cnum { display: none; }
   .mod-card { grid-template-columns: 1fr; }

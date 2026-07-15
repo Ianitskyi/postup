@@ -195,7 +195,7 @@ function renderDonatePanel(s) {
         <button onclick="setDonateType('monthly', this)">Підписка на студента</button>
       </div>
       <div class="subscribe-hint" id="sub-hint">
-        Щомісячна підтримка: стипендія, проживання та харчування. Ви отримуватимете звіти про навчання щосеместру. ${s.monthlySupporters} людей уже підписані, скасувати можна будь-коли.
+        Щомісячна підтримка йде <b>напряму на рахунок ${s.name.split(" ")[0]}</b>: стипендія, проживання та харчування. Ви отримуватимете звіти про навчання щосеместру. ${s.monthlySupporters} людей уже підписані, скасувати можна будь-коли.
       </div>
 
       <div class="amount-grid">
@@ -220,14 +220,24 @@ function renderDonatePanel(s) {
       <div class="guarantee">
         <div class="gi">🛡️</div>
         <div>
-          <b>Гарантія повернення коштів</b>
-          <span>Гроші зберігаються на рахунку банку-партнера й передаються <u>напряму університету</u>. Якщо кошти не знадобляться — недозбір, бюджет, інший грант — спрацюють <u>пріоритети, які ви щойно розставили</u>; змінити їх можна будь-коли. Повернення — <u>справді 100%</u>: комісію 1% не утримуємо, банківські комісії покриває платформа. <a href="how-it-works.html#faq">Детальніше у FAQ</a></span>
+          <b id="guarantee-title">Гарантія повернення коштів</b>
+          <span id="guarantee-text"></span>
         </div>
       </div>
     </div>`;
   /* Кнопка без відмінювання, простіше і граматично безпечно */
   const btn = document.querySelector(".donate-panel .btn-accent");
   if (btn) btn.textContent = "Підтримати · " + UAH.format(donateAmount) + " ₴";
+  updateGuaranteeText();
+}
+
+const GUARANTEE_TEXT = {
+  once: 'Гроші на вступ зберігаються на рахунку банку-партнера й передаються <u>напряму закладу освіти</u>, ніколи на картку студента. Якщо кошти не знадобляться — недозбір, бюджет, інший грант — спрацюють <u>пріоритети, які ви щойно розставили</u>; змінити їх можна будь-коли. Повернення — <u>справді 100%</u>: комісію 1% не утримуємо, банківські комісії покриває платформа. <a href="how-it-works.html#faq">Детальніше у FAQ</a>',
+  monthly: 'Щомісячна стипендія — це вже не оплата вступу, тому надходить <u>напряму на банківський рахунок студента</u>. Він щосеместру сам подає підтвердження академічного поступу, платформа перевіряє це звітування. Підписку можна скасувати будь-коли, а невикористані кошти на випадок недозбору чи невступу — <u>ваші пріоритети, розставлені вище</u>. <a href="how-it-works.html#faq">Детальніше у FAQ</a>'
+};
+function updateGuaranteeText() {
+  const el = document.getElementById("guarantee-text");
+  if (el) el.innerHTML = GUARANTEE_TEXT[donateType];
 }
 
 function setDonateType(t, el) {
@@ -235,6 +245,7 @@ function setDonateType(t, el) {
   el.parentElement.querySelectorAll("button").forEach(b => b.classList.remove("active"));
   el.classList.add("active");
   document.getElementById("sub-hint").style.display = t === "monthly" ? "block" : "none";
+  updateGuaranteeText();
 }
 function setAmount(a, el) {
   donateAmount = a;
@@ -274,7 +285,7 @@ function donate(studentId) {
     donateType === "monthly" ? "💛" : "🎉",
     donateType === "monthly" ? "Підписку оформлено (демо)" : "Дякуємо за підтримку! (демо)",
     donateType === "monthly"
-      ? `У робочій версії тут відбудеться оформлення щомісячного платежу ${UAH.format(donateAmount)} ₴ через платіжний сервіс. Кошти щомісяця надходитимуть на цільовий рахунок для ${s.name}.${fbMsg}${tipMsg}`
+      ? `У робочій версії тут відбудеться оформлення щомісячного платежу ${UAH.format(donateAmount)} ₴ через платіжний сервіс. Кошти щомісяця надходитимуть напряму на банківський рахунок ${s.name}.${fbMsg}${tipMsg}`
       : `У робочій версії тут відкриється сторінка оплати. ${UAH.format(donateAmount)} ₴ буде зараховано на ескроу-рахунок збору для ${s.name}.${fbMsg}${tipMsg} Прогрес на сторінці вже оновлено.`
   );
   setTimeout(() => { initProfile(); }, 400);
@@ -306,6 +317,34 @@ function initScholarships() {
       <button class="btn btn-ghost btn-sm" style="align-self:flex-start"
         onclick="openModal('💰','Поповнення фонду (демо)','У робочій версії тут можна доєднатися до фонду цієї стипендії разовим внеском або підпискою.')">
         Доєднатися до фонду</button>
+    </div>`).join("");
+}
+
+/* Той самий список стипендій, але для вступника — з кнопкою подачі заявки */
+function initApplyScholarships() {
+  document.getElementById("sch-apply-list").innerHTML = DB.scholarships.map(sc => `
+    <div class="sch-card">
+      <div class="sch-head">
+        <div>
+          <h3>${sc.name}</h3>
+          <div class="founder">Засновник: ${sc.founder}</div>
+        </div>
+        <div class="chip-row" style="justify-content:flex-end;margin:0">
+          <span class="chip ${sc.mode === "once" ? "accent" : "brand"}">${sc.mode === "once" ? "🎯 Разова · на вступ" : "📆 Регулярна · на навчання"}</span>
+          <span class="chip">${sc.type}</span>
+        </div>
+      </div>
+      <div class="criteria">🎯 ${sc.criteria}</div>
+      <p style="font-size:14px;color:var(--ink-2)">${sc.description}</p>
+      <div class="sch-nums">
+        ${sc.mode === "once"
+          ? `<div class="n"><b>${fmtUAH(sc.amount)}</b><span>одноразово / особу</span></div>`
+          : `<div class="n"><b>${fmtUAH(sc.monthly)}</b><span>щомісяця / особу</span></div>`}
+        <div class="n"><b>${sc.recipients}</b><span>отримувачів зараз</span></div>
+      </div>
+      <button class="btn btn-accent btn-sm" style="align-self:flex-start"
+        onclick="openModal('🏅','Заявка на стипендію (демо)','У робочій версії тут відкриється форма подачі заявки на цю стипендію: ваш профіль звірять із критеріями відбору, а засновник стипендії затвердить кандидатів.')">
+        Податися на цю стипендію</button>
     </div>`).join("");
 }
 

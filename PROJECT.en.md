@@ -1,11 +1,11 @@
 # Postup — a step toward admission
 
-**A platform for targeted funding of higher education for talented Ukrainian applicants.**
+**A platform for targeted funding of education for talented Ukrainian applicants — at state-licensed Ukrainian institutions of higher and vocational pre-higher education (universities, academies, institutes, colleges, technical schools).**
 
 🔗 Live demo: https://ianitskyi.github.io/postup/
 📧 Contact: hello@postup.demo
 
-> *A brief for potential donors and sponsors. As of 14 July 2026 the project exists as a clickable prototype — all people, amounts, and campaigns in the demo are fictional.*
+> *A brief for potential donors and sponsors. As of 15 July 2026 the project exists as a clickable prototype — all people, amounts, and campaigns in the demo are fictional.*
 
 ---
 
@@ -30,21 +30,27 @@ Postup integrates **discovery, verification, and transactions** into a single sy
 - Donors discover applicants through structured profiles enriched with verified signals: standardized test (NMT) results, competition wins, creative portfolios, recommendations, admission status.
 - Donors filter candidates by criteria: field of study, type of institution (university or vocational college), background, or social mission (support for internally displaced people, children of fallen defenders, veterans, people with disabilities, applicants from rural schools).
 - Support can be one-time or recurring, and donors can establish a named or targeted scholarship.
-- **Funds are transferred directly to the educational institution** through a controlled, transparent mechanism facilitated by a partner bank — ensuring proper use and building trust.
+- **Funds for admission are transferred directly to the educational institution** through a controlled, transparent mechanism facilitated by a partner bank — ensuring proper use and building trust. A recurring stipend for living costs during studies goes directly to the student instead (details below).
 
 ## How we're different
 
-We don't compete with existing funds (Believe in Yourself, the Pinchuk Foundation, and others) — they run their own closed programs with a limited number of scholars and fixed selection criteria. Postup is an open platform: any donor can choose any applicant by any criterion, and any applicant can apply regardless of which specific program they'd fit. What sets us apart from general crowdfunding platforms (GoFundMe, Spilnokosht) is the guarantee that funds are used as intended — via escrow and direct payment to the university, not a transfer to a card. We see existing funds as potential partners rather than competitors — the platform could administer their scholarship programs.
+We don't compete with existing funds (Believe in Yourself, the Pinchuk Foundation, and others) — they run their own closed programs with a limited number of scholars and fixed selection criteria. Postup is an open platform: any donor can choose any applicant by any criterion, and any applicant can apply regardless of which specific program they'd fit. What sets us apart from general crowdfunding platforms (GoFundMe, Spilnokosht) is the guarantee that admission funds are used as intended — via escrow and direct payment to the institution, not a transfer to a card. We see existing funds as potential partners rather than competitors — the platform could administer their scholarship programs.
 
 ## How the money moves
 
-We **do not transfer money to students' cards.**
+The mechanism differs for two types of support — and that's not a contradiction, it's a clear line between **admission** and **during studies**.
+
+**Funds for admission (tuition contract, initial dormitory payment) — never to the student's card:**
 
 1. The donation goes to a dedicated **escrow account** at a partner bank — separate accounting for each campaign.
 2. The applicant passes the competition and receives an **enrollment order** (verified against Ukraine's open EDEBO registry).
-3. The platform transfers the funds **directly to the university's account** — for tuition, dormitory, or scholarship.
+3. The platform transfers the funds **directly to the institution's account** — for tuition and dormitory.
 
-The student cannot withdraw the money as cash; the platform cannot spend it on itself.
+The student cannot withdraw these funds as cash; the platform cannot spend them on itself.
+
+**A recurring stipend during studies (food, housing, materials) — directly to the student:**
+
+This is no longer an admission payment but ongoing living support for someone already enrolled — so the platform transfers it directly to the student's bank account, without the institution's involvement. In exchange, the scholar submits proof of academic progress each semester (a grade transcript or academic standing certificate), which the platform verifies before continuing payments for the next semester.
 
 ## Donor guarantee
 
@@ -71,18 +77,18 @@ For recurring scholarships (subscriptions, named scholarships for the whole dura
 
 ## Metrics we report on
 
-Published annually: number of verified applicants, campaign-to-enrollment conversion rate, share of funds that reached the university (target 99%), subscriber retention, and the share of scholars who passed their semester. First real figures will follow the pilot with 3–5 applicants.
+Published annually: number of verified applicants, campaign-to-enrollment conversion rate, share of funds that reached the institution (target 99%), subscriber retention, and the share of scholars who passed their semester. First real figures will follow the pilot with 3–5 applicants.
 
-## For universities
+## For educational institutions
 
-Universities gain **motivated tuition-paying students whose education is already funded**, at no cost to them. Partnership is not a condition for payouts (third-party payment of tuition is standard practice), but it speeds up the process. Three levels: memorandum → operational integration → strategic partnership.
+Universities, academies, institutes, colleges, and technical schools gain **motivated tuition-paying students whose education is already funded**, at no cost to them. Partnership is not a condition for payouts (third-party payment of tuition is standard practice), but it speeds up the process. The institution never sees or administers recurring stipends — those go directly to students — so partnership adds no ongoing administrative work. Three levels: memorandum → operational integration → strategic partnership.
 
 ## Funding model
 
 Postup is a **non-profit organization** (charitable foundation). Sources:
 
 1. **Grants** — for development and the first 1–2 years of operation.
-2. **A 1% fee** on donations for administration (99% reaches the university).
+2. **A 1% fee** on donations for administration (99% reaches the institution or the student).
 3. **Voluntary donor contribution** "for the platform's work" at checkout (the GoFundMe model).
 4. **Service fees from companies** for administering corporate scholarships.
 
@@ -90,11 +96,11 @@ For comparison: administrative costs of charitable platforms worldwide are 5–1
 
 ## Data protection
 
-All candidates disclose their data **voluntarily**, with written consent (for minors — parental consent), which can be withdrawn at any time. Documents are never published and are stored encrypted. There are no advertising trackers.
+All candidates disclose their data **voluntarily**, with written consent (for minors — parental consent), which can be withdrawn at any time. Documents are never published and are stored encrypted. There are no advertising trackers. The platform only funds education at **state-licensed Ukrainian institutions** — this allows status verification against open state registries (EDEBO).
 
 ## Current status and roadmap
 
-**Now:** a clickable prototype demonstrating the full user experience — an applicant catalog, profiles, scholarships, a page for universities, and an admin panel with moderation and payouts.
+**Now:** a clickable prototype demonstrating the full user experience — separate tracks for applicants and donors, a catalog, profiles, scholarships, a page for educational institutions, and an admin panel with moderation and payouts.
 
 **Next steps:**
 1. Registration of the charitable foundation and legal setup.
@@ -106,7 +112,7 @@ All candidates disclose their data **voluntarily**, with written consent (for mi
 ## How you can help
 
 - **Grant funding** for development and first-year operations.
-- **Partnership** — a bank, payment provider, university, or charitable foundation.
+- **Partnership** — a bank, payment provider, educational institution, or charitable foundation.
 - **Establishing the first named scholarship** — becoming the face of the pilot.
 - **Expertise** — legal, educational, technological.
 

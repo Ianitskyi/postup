@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Я вступник — Поступ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=7">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">🎓</span> Поступ</a>
+    <nav class="main-nav">
+      <a href="apply.html" class="active">Я вступник</a>
+      <a href="students.html">Я благодійник</a>
+      <a href="how-it-works.html">Як це працює</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">🎓 Розділ для вступників</div>
+        <h2>Отримайте підтримку на навчання</h2>
+        <p class="sub">Вступаєте в університет, академію, інститут, коледж чи технікум — ліцензований державою український заклад освіти? Оберіть один із двох шляхів, або скористайтеся обома одразу.</p>
+      </div>
+    </div>
+
+    <div class="cta-split">
+      <div class="cta-box student">
+        <h3>📢 Створити власний збір</h3>
+        <p>Розкажіть свою історію, додайте досягнення та рекомендації. Після безплатної верифікації профіль стане публічним — донори зможуть знайти й підтримати саме вас.</p>
+        <button class="btn btn-accent" onclick="openModal('📨','Заявка вступника (демо)','У робочій версії тут відкриється покрокова форма реєстрації профілю вступника з завантаженням документів.')">Створити збір</button>
+      </div>
+      <div class="cta-box donor">
+        <h3>🏅 Податися на іменну стипендію</h3>
+        <p>Деякі благодійники вже заснували стипендії з власними критеріями — переглянте їх і подайтеся на ту, що вам підходить.</p>
+        <a class="btn btn-primary" href="#scholarships-apply">Переглянути стипендії ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="scholarships-apply" style="padding-top:0">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Стипендії</div>
+        <h2>Оберіть стипендію за своїми критеріями</h2>
+        <p class="sub">Кожна стипендія має власні критерії відбору — від соціальної категорії до спеціальності. Подайтеся на ту, що вам підходить.</p>
+      </div>
+    </div>
+    <div class="sch-grid" id="sch-apply-list"></div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="panel">
+      <h2>Як це працює для вас — коротко</h2>
+      <div class="steps" style="margin-top:16px">
+        <div class="step"><div class="num">1</div><h3>Заявка</h3><p>Розкажіть про себе: куди вступаєте, чому саме ця професія, яка сума потрібна.</p></div>
+        <div class="step"><div class="num">2</div><h3>Матеріали</h3><p>Мотиваційний лист, 2-хвилинна відеовізитка, досягнення, 1–2 рекомендації.</p></div>
+        <div class="step"><div class="num">3</div><h3>Верифікація</h3><p>Безплатна перевірка документів і результатів — зазвичай 3–5 робочих днів.</p></div>
+        <div class="step"><div class="num">4</div><h3>Збір і звіти</h3><p>Профіль публікується. Ви оновлюєте таймлайн вступу і звітуєте про навчання.</p></div>
+      </div>
+      <p style="margin-top:16px"><a href="how-it-works.html#for-applicants">Детальніше про верифікацію, звітність і умови стипендій →</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-note" style="border:none;margin:0;padding:0">
+      <span>© 2026 БФ «Поступ» · Прототип — усі персонажі та збори вигадані</span>
+      <span><a href="universities.html" style="opacity:.6">Закладам освіти</a> · <a href="admin.html" style="opacity:.6">Адмінка</a> · <a href="index.html">На головну</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js?v=7"></script>
+<script src="js/app.js?v=7"></script>
+<script>initApplyScholarships();</script>
+</body>
+</html>
