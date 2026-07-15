@@ -123,6 +123,11 @@ a:hover { text-decoration: underline; }
 .path-btn.student .pt { color: #6b4600; }
 .path-btn.student .ps { color: var(--accent-ink); }
 .path-btn.student:hover { background: #fce7c0; }
+.path-btn.institution { background: var(--good-soft); color: #0a5c2a; border-color: var(--good); }
+.path-btn.institution .pt { color: #0a5c2a; }
+.path-btn.institution .ps { color: var(--good); }
+.path-btn.institution:hover { background: #cdeedb; }
+.hero-paths-3 { grid-template-columns: 1fr 1fr 1fr; max-width: none; }
 .hero-trust { margin-top: 26px; display: flex; gap: 22px; flex-wrap: wrap; color: var(--muted); font-size: 13.5px; }
 .hero-trust span { display: flex; align-items: center; gap: 7px; }
 
@@ -528,7 +533,7 @@ a:hover { text-decoration: underline; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
-  .cards-grid, .steps, .stats-band, .filters-row, .filters-row-6, .kpi-grid, .hero-paths { grid-template-columns: 1fr; }
+  .cards-grid, .steps, .stats-band, .filters-row, .filters-row-6, .kpi-grid, .hero-paths, .hero-paths-3 { grid-template-columns: 1fr; }
   .main-nav { display: none; }
   .header-cta .btn-ghost { display: none; }
   .camp-row { grid-template-columns: 1fr 80px; }
