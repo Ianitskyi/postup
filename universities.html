@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Університетам — Поступ</title>
+<title>Університетам і коледжам — Поступ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=4">
+<link rel="stylesheet" href="css/styles.css?v=5">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
 </head>
 <body>
@@ -18,7 +18,6 @@
       <a href="students.html">Вступники</a>
       <a href="scholarships.html">Стипендії</a>
       <a href="how-it-works.html">Як це працює</a>
-      <a href="universities.html" class="active">Університетам</a>
     </nav>
     <div class="header-cta">
       <a class="btn btn-primary btn-sm" href="#partner">Стати партнером</a>
@@ -30,9 +29,9 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="eyebrow">Для університетів</div>
+        <div class="eyebrow">Для закладів освіти</div>
         <h2>Отримуйте вмотивованих контрактників, чиє навчання вже оплачено</h2>
-        <p class="sub">Поступ приводить вишам студентів, за яких платять благодійники. Кошти надходять на офіційний рахунок закладу — за контракт, гуртожиток чи стипендію. Від вишу не потрібно жодних витрат.</p>
+        <p class="sub">Поступ приводить університетам і фаховим коледжам студентів, за яких платять благодійники. Кошти надходять на офіційний рахунок закладу — за контракт, гуртожиток чи стипендію. Витрат для закладу не потрібно.</p>
       </div>
     </div>
 
@@ -55,7 +54,7 @@
         <div class="gi">ℹ️</div>
         <div>
           <b>Партнерство — не умова для виплат</b>
-          <span>Ми переказуємо кошти будь-якому акредитованому закладу вищої освіти України: оплата навчання третьою особою — стандартна практика. Партнерський статус лише робить процес швидшим для ваших студентів.</span>
+          <span>Ми переказуємо кошти будь-якому акредитованому закладу освіти України — університету чи фаховому коледжу: оплата навчання третьою особою — стандартна практика. Партнерський статус лише робить процес швидшим для ваших студентів.</span>
         </div>
       </div>
     </div>
@@ -82,7 +81,7 @@
     </div>
 
     <div class="panel" style="margin-top:28px">
-      <h2>🤝 Виші-партнери</h2>
+      <h2>🤝 Заклади-партнери</h2>
       <div class="admin-note">⚠️ Це прототип: список нижче ілюструє, як виглядатиме сторінка з реальними партнерами, але жодного підписаного меморандуму поки немає. Перша мета після реєстрації фонду — 2–3 справжні угоди (див. <a href="https://github.com/Ianitskyi/postup/blob/main/ACTION-PLAN.md">план дій</a>).</div>
       <p style="color:var(--ink-2);font-size:14.5px;margin-bottom:12px">Приклад, як підтверджені партнери виглядатимуть на цій сторінці:</p>
       <div class="chip-row" id="partner-list"></div>
@@ -107,8 +106,8 @@
   </div>
 </footer>
 
-<script src="js/data.js?v=4"></script>
-<script src="js/app.js?v=4"></script>
+<script src="js/data.js?v=5"></script>
+<script src="js/app.js?v=5"></script>
 <script>
 document.getElementById("partner-list").innerHTML =
   DB.partnerUniversities.map(u => `<span class="chip good" style="font-size:13px;padding:8px 14px">✓ ${u}</span>`).join("");

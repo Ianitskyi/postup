@@ -28,7 +28,7 @@ function studentCard(s) {
       <p class="excerpt">${s.excerpt}</p>
       <div class="chip-row">
         <span class="status-pill ${st.cls}">${st.label}</span>
-        ${isPartnerUni(s.university) ? '<span class="chip good">🤝 Виш-партнер</span>' : ""}
+        ${s.levelType === "Коледж" ? '<span class="chip brand">🏫 Фаховий коледж</span>' : ""}
         ${s.categories.map(c => `<span class="chip">${c}</span>`).join("")}
       </div>
     </div>
@@ -69,10 +69,12 @@ function initCatalog() {
   const $field = document.getElementById("f-field");
   const $uni = document.getElementById("f-uni");
   const $cat = document.getElementById("f-cat");
+  const $level = document.getElementById("f-level");
 
   fillSelect($field, DB.filters.fields, "Усі галузі");
-  fillSelect($uni, DB.filters.universities, "Усі університети");
+  fillSelect($uni, DB.filters.universities, "Усі заклади освіти");
   fillSelect($cat, DB.filters.categories, "Будь-який критерій");
+  fillSelect($level, DB.filters.levels, "ЗВО та коледжі");
 
   const params = new URLSearchParams(location.search);
   if (params.get("cat")) $cat.value = params.get("cat");
@@ -84,7 +86,8 @@ function initCatalog() {
       (!q || (s.name + " " + s.specialty + " " + s.city + " " + s.university).toLowerCase().includes(q)) &&
       (!$field.value || s.field === $field.value) &&
       (!$uni.value || s.university === $uni.value) &&
-      (!$cat.value || s.categories.includes($cat.value))
+      (!$cat.value || s.categories.includes($cat.value)) &&
+      (!$level.value || (s.levelType || "ЗВО") === $level.value)
     );
     document.getElementById("catalog").innerHTML =
       res.length ? res.map(studentCard).join("")
@@ -92,9 +95,9 @@ function initCatalog() {
     document.getElementById("count").textContent =
       `Показано ${res.length} з ${DB.students.length} верифікованих вступників`;
   }
-  [$q, $field, $uni, $cat].forEach(el => el.addEventListener("input", apply));
+  [$q, $field, $uni, $cat, $level].forEach(el => el.addEventListener("input", apply));
   document.getElementById("f-reset").addEventListener("click", () => {
-    $q.value = ""; $field.value = ""; $uni.value = ""; $cat.value = ""; apply();
+    $q.value = ""; $field.value = ""; $uni.value = ""; $cat.value = ""; $level.value = ""; apply();
   });
   apply();
 }
@@ -119,7 +122,7 @@ function initProfile() {
         <div class="meta">${s.age} років · ${s.city} · вступає: <b>${s.specialty}, ${s.university}</b></div>
         <div class="chip-row">
           <span class="status-pill ${st.cls}">● ${s.statusLabel}</span>
-          ${isPartnerUni(s.university) ? '<span class="chip good" title="Виш підтверджує зарахування і приймає виплати за прямою процедурою">🤝 Виш-партнер</span>' : ""}
+          ${s.levelType === "Коледж" ? '<span class="chip brand">🏫 Фаховий коледж</span>' : ""}
           ${s.categories.map(c => `<span class="chip">${c}</span>`).join("")}
         </div>
       </div>

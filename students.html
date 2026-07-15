@@ -6,7 +6,7 @@
 <title>Вступники — Поступ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=4">
+<link rel="stylesheet" href="css/styles.css?v=5">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
 </head>
 <body>
@@ -18,7 +18,6 @@
       <a href="students.html" class="active">Вступники</a>
       <a href="scholarships.html">Стипендії</a>
       <a href="how-it-works.html">Як це працює</a>
-      <a href="universities.html">Університетам</a>
     </nav>
     <div class="header-cta">
       <a class="btn btn-ghost btn-sm" href="how-it-works.html#students">Я вступник</a>
@@ -33,21 +32,20 @@
       <div>
         <div class="eyebrow">Каталог</div>
         <h2>Оберіть, кого підтримати</h2>
-        <p class="sub">Фільтруйте за професією, університетом або соціальним критерієм — підтримка ветеранів, ВПО, дітей захисників, людей з інвалідністю та інших.</p>
+        <p class="sub">Фільтруйте за професією, закладом освіти (університет чи фаховий коледж) або соціальним критерієм — підтримка ветеранів, ВПО, дітей захисників, людей з інвалідністю та інших.</p>
       </div>
     </div>
 
     <div class="filters">
-      <div class="filters-row">
+      <div class="filters-row filters-row-6">
         <div class="field"><label>Пошук</label><input id="f-q" type="text" placeholder="Ім'я, місто, спеціальність…"></div>
         <div class="field"><label>Галузь</label><select id="f-field"></select></div>
-        <div class="field"><label>Університет</label><select id="f-uni"></select></div>
+        <div class="field"><label>Заклад освіти</label><select id="f-uni"></select></div>
+        <div class="field"><label>Рівень освіти</label><select id="f-level"></select></div>
         <div class="field"><label>Соціальний критерій</label><select id="f-cat"></select></div>
         <button class="btn btn-light" id="f-reset">Скинути</button>
       </div>
     </div>
-
-    <p class="sub-note" style="margin-bottom:14px">🤝 «Виш-партнер» означає лише швидше підтвердження зарахування й виплат — це не вимога і не привілей: ви можете підтримати вступника в будь-який акредитований виш України. <a href="how-it-works.html#faq">Детальніше у FAQ</a></p>
 
     <div class="result-count" id="count"></div>
     <div class="cards-grid" id="catalog"></div>
@@ -58,13 +56,13 @@
   <div class="container">
     <div class="footer-note" style="border:none;margin:0;padding:0">
       <span>© 2026 БФ «Поступ» · Прототип — усі персонажі та збори вигадані</span>
-      <span><a href="admin.html" style="opacity:.6">Адмінка</a> · <a href="index.html">На головну</a></span>
+      <span><a href="universities.html" style="opacity:.6">Університетам</a> · <a href="admin.html" style="opacity:.6">Адмінка</a> · <a href="index.html">На головну</a></span>
     </div>
   </div>
 </footer>
 
-<script src="js/data.js?v=4"></script>
-<script src="js/app.js?v=4"></script>
+<script src="js/data.js?v=5"></script>
+<script src="js/app.js?v=5"></script>
 <script>initCatalog();</script>
 </body>
 </html>

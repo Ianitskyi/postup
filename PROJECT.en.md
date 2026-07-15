@@ -28,7 +28,7 @@ The market for funding education is constrained not by a lack of capital, but by
 Postup integrates **discovery, verification, and transactions** into a single system.
 
 - Donors discover applicants through structured profiles enriched with verified signals: standardized test (NMT) results, competition wins, creative portfolios, recommendations, admission status.
-- Donors filter candidates by criteria: field of study, university, background, or social mission (support for internally displaced people, children of fallen defenders, veterans, people with disabilities, applicants from rural schools).
+- Donors filter candidates by criteria: field of study, type of institution (university or vocational college), background, or social mission (support for internally displaced people, children of fallen defenders, veterans, people with disabilities, applicants from rural schools).
 - Support can be one-time or recurring, and donors can establish a named or targeted scholarship.
 - **Funds are transferred directly to the educational institution** through a controlled, transparent mechanism facilitated by a partner bank — ensuring proper use and building trust.
 
