@@ -48,7 +48,7 @@ The mechanism differs for two types of support — and that's not a contradictio
 
 The student cannot withdraw these funds as cash; the platform cannot spend them on itself.
 
-**A recurring stipend during studies (food, housing — including dormitory fees, materials) — directly to the student:**
+**A recurring stipend during studies (food, housing, materials) — directly to the student, who decides where to live:**
 
 This is no longer an admission payment but ongoing living support for someone already enrolled — so the platform transfers it directly to the student's bank account, without the institution's involvement. In exchange, the scholar submits proof of academic progress each semester (a grade transcript or academic standing certificate), which the platform verifies before continuing payments for the next semester.
 
