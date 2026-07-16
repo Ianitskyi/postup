@@ -50,7 +50,7 @@ The student cannot withdraw these funds as cash; the platform cannot spend them 
 
 **A recurring stipend during studies (food, housing, materials) — directly to the student:**
 
-This is no longer an admission payment but ongoing living support for someone already enrolled — so the platform transfers it directly to the student's bank account, without the institution's involvement. In exchange, the scholar submits proof of academic progress each semester (a grade transcript or academic standing certificate), which the platform verifies before continuing payments for the next semester.
+This is no longer an admission payment but ongoing living support for someone already enrolled — so the platform transfers it directly to the student's bank account, without the institution's involvement. Payments continue monthly with no academic conditions, for as long as the student remains enrolled and their scholarship fund isn't depleted. The student decides how to spend it — rent, food, study materials, or anything else — which lets them focus on studying instead of hunting for side jobs or cheaper housing.
 
 ## Donor guarantee
 
@@ -60,12 +60,12 @@ If the funds are **not needed for tuition** — the applicant did not enroll, th
 2. Redirect it to another applicant of the donor's choice;
 3. Refund the donor — **100% of the amount**, with no platform fee withheld; banking fees are covered by the platform.
 
-For recurring scholarships (subscriptions, named scholarships for the whole duration of studies), continuing payments each semester is conditional on passing that semester. Academic failure or expulsion suspends payments — unused funds follow the same donor priorities.
+For recurring scholarships (subscriptions, named scholarships for the whole duration of studies), payments continue with no academic conditions for as long as the student remains enrolled and their scholarship fund isn't depleted. Expulsion from the institution ends payments — unused funds follow the same donor priorities.
 
 ## What a donor can do
 
 - **One-time support for admission** — covers the first-year tuition contract.
-- **Subscription to a student** — monthly support throughout studies with per-semester progress reports.
+- **Subscription to a student** — monthly support throughout studies, with no academic conditions, plus updates on how their studies are going.
 - **Named scholarship** — with a custom name and criteria (in memory of a loved one, from a company, for a specific profession or community). Can be one-time (for admission) or recurring (for the whole duration of studies).
 
 ## Verification and reporting
@@ -74,10 +74,6 @@ For recurring scholarships (subscriptions, named scholarships for the whole dura
 - Every profile has a public admission timeline.
 - One-time donors receive a final report (enrollment order + payment confirmation); subscribers receive per-semester study reports.
 - Year after year, a reputational history of the student accumulates — from application to diploma.
-
-## For educational institutions
-
-Universities, academies, institutes, colleges, and technical schools gain **motivated tuition-paying students whose education is already funded**, at no cost to them. Partnership is not a condition for payouts (third-party payment of tuition is standard practice), but it speeds up the process. The institution never sees or administers recurring stipends — those go directly to students — so partnership adds no ongoing administrative work. Three levels: memorandum → operational integration → strategic partnership.
 
 ## Funding model
 

@@ -3,7 +3,7 @@
 // Читає позначені атрибутом data-edit елементи прямо з HTML-файлів на диску,
 // показує їх у зручному вигляді для редагування і зберігає зміни назад у ці ж файли.
 
-const EDIT_FILES = ["index.html", "how-it-works.html", "universities.html"];
+const EDIT_FILES = ["index.html", "how-it-works.html"];
 
 const FAQ_TOPICS = {
   money1: "Якщо людина не вступить або збір не завершиться",
@@ -64,36 +64,6 @@ const FIELDS_CONFIG = [
   { file: "how-it-works.html", key: "hiw.escrow.guarantee1.text", group: "Як це працює · Гарантії для благодійників", label: "Текст про повернення коштів" },
   { file: "how-it-works.html", key: "hiw.escrow.guarantee2.title", group: "Як це працює · Гарантії для благодійників", label: 'Заголовок "А регулярна стипендія?"' },
   { file: "how-it-works.html", key: "hiw.escrow.guarantee2.text", group: "Як це працює · Гарантії для благодійників", label: "Текст про регулярну стипендію" },
-  { file: "how-it-works.html", key: "hiw.institutions.eyebrow", group: "Як це працює · Для закладів освіти", label: "Надпис-рубрика" },
-  { file: "how-it-works.html", key: "hiw.institutions.title", group: "Як це працює · Для закладів освіти", label: "Заголовок" },
-  { file: "how-it-works.html", key: "hiw.institutions.sub", group: "Як це працює · Для закладів освіти", label: "Підзаголовок" },
-  { file: "how-it-works.html", key: "hiw.institutions.stipendNote", group: "Як це працює · Для закладів освіти", label: "Примітка про регулярні стипендії" },
-  { file: "how-it-works.html", key: "hiw.institutions.guarantee.title", group: "Як це працює · Для закладів освіти", label: 'Заголовок "Партнерство — не умова для виплат"' },
-  { file: "how-it-works.html", key: "hiw.institutions.guarantee.text", group: "Як це працює · Для закладів освіти", label: "Текст про партнерство" },
-
-  { file: "universities.html", key: "univ.intro.eyebrow", group: "Заклади освіти · Вступ", label: "Надпис-рубрика" },
-  { file: "universities.html", key: "univ.intro.title", group: "Заклади освіти · Вступ", label: "Заголовок" },
-  { file: "universities.html", key: "univ.intro.sub", group: "Заклади освіти · Вступ", label: "Підзаголовок" },
-  { file: "universities.html", key: "univ.benefit1.title", group: "Заклади освіти · Переваги", label: "Перевага 1 — заголовок" },
-  { file: "universities.html", key: "univ.benefit1.text", group: "Заклади освіти · Переваги", label: "Перевага 1 — опис" },
-  { file: "universities.html", key: "univ.benefit2.title", group: "Заклади освіти · Переваги", label: "Перевага 2 — заголовок" },
-  { file: "universities.html", key: "univ.benefit2.text", group: "Заклади освіти · Переваги", label: "Перевага 2 — опис" },
-  { file: "universities.html", key: "univ.benefit3.title", group: "Заклади освіти · Переваги", label: "Перевага 3 — заголовок" },
-  { file: "universities.html", key: "univ.benefit3.text", group: "Заклади освіти · Переваги", label: "Перевага 3 — опис" },
-  { file: "universities.html", key: "univ.benefit4.title", group: "Заклади освіти · Переваги", label: "Перевага 4 — заголовок" },
-  { file: "universities.html", key: "univ.benefit4.text", group: "Заклади освіти · Переваги", label: "Перевага 4 — опис" },
-  { file: "universities.html", key: "univ.howPay.title", group: "Заклади освіти · Як отримати кошти", label: "Заголовок блоку" },
-  { file: "universities.html", key: "univ.stipendNote", group: "Заклади освіти · Як отримати кошти", label: "Примітка про регулярні стипендії" },
-  { file: "universities.html", key: "univ.guarantee.title", group: "Заклади освіти · Як отримати кошти", label: 'Заголовок "Партнерство — не умова для виплат"' },
-  { file: "universities.html", key: "univ.guarantee.text", group: "Заклади освіти · Як отримати кошти", label: "Текст про партнерство" },
-  { file: "universities.html", key: "univ.tiers.eyebrow", group: "Заклади освіти · Рівні співпраці", label: "Надпис-рубрика" },
-  { file: "universities.html", key: "univ.tiers.title", group: "Заклади освіти · Рівні співпраці", label: "Заголовок" },
-  { file: "universities.html", key: "univ.tier1.title", group: "Заклади освіти · Рівні співпраці", label: "Рівень 1 — заголовок" },
-  { file: "universities.html", key: "univ.tier1.text", group: "Заклади освіти · Рівні співпраці", label: "Рівень 1 — опис" },
-  { file: "universities.html", key: "univ.tier2.title", group: "Заклади освіти · Рівні співпраці", label: "Рівень 2 — заголовок" },
-  { file: "universities.html", key: "univ.tier2.text", group: "Заклади освіти · Рівні співпраці", label: "Рівень 2 — опис" },
-  { file: "universities.html", key: "univ.tier3.title", group: "Заклади освіти · Рівні співпраці", label: "Рівень 3 — заголовок" },
-  { file: "universities.html", key: "univ.tier3.text", group: "Заклади освіти · Рівні співпраці", label: "Рівень 3 — опис" },
 ];
 
 // FAQ-поля (how-it-works.html) описуємо окремо й одразу підмішуємо в конфіг,
