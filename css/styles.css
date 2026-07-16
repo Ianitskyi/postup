@@ -533,12 +533,24 @@ a:hover { text-decoration: underline; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
-  .cards-grid, .steps, .stats-band, .filters-row, .filters-row-6, .kpi-grid, .hero-paths, .hero-paths-3 { grid-template-columns: 1fr; }
-  .main-nav { gap: 2px; }
-  .main-nav a { padding: 7px 8px; font-size: 12.5px; }
+  .cards-grid, .steps, .stats-band, .filters-row, .filters-row-6, .kpi-grid, .hero-paths-3 { grid-template-columns: 1fr; }
+  /* На мобільному в шапці лишаємо тільки «Як це працює» — вибір «вступник/благодійник» дублюють великі кнопки нижче на сторінці */
+  .main-nav a:nth-child(1), .main-nav a:nth-child(2) { display: none; }
+  .main-nav a { padding: 7px 10px; font-size: 13px; }
   .camp-row { grid-template-columns: 1fr 80px; }
   .camp-row .cnum { display: none; }
   .mod-card { grid-template-columns: 1fr; }
   .mod-actions { flex-direction: row; }
   .escrow-band { padding: 28px 22px; }
+
+  /* Стискаємо перший екран, щоб дві кнопки-шляхи вміщалися без прокрутки */
+  .hero { padding: 20px 0 28px; }
+  .hero h1 { font-size: 26px; }
+  .hero p.lead { font-size: 14.5px; margin-top: 10px; }
+  .hero-paths { margin-top: 16px; gap: 10px; max-width: none; }
+  .hero .path-btn { padding: 12px 12px; border-radius: 12px; gap: 1px; }
+  .hero .path-btn .pi { font-size: 19px; }
+  .hero .path-btn .pt { font-size: 14.5px; margin-top: 2px; }
+  .hero .path-btn .ps { font-size: 11px; line-height: 1.3; }
+  .hero-trust { display: none; }
 }

@@ -33,13 +33,14 @@ function showView(name, btn) {
 function renderDashboard() {
   const totalEscrow = DB.donationsFeed.filter(d => d.state === "escrow").reduce((a, d) => a + d.amount, 0)
     + DB.students.filter(s => s.status !== "enrolled").reduce((a, s) => a + s.raised, 0);
-  const totalPaid = DB.payouts.filter(p => p.state === "done").reduce((a, p) => a + p.amount, 0);
+  const totalPaid = DB.payouts.filter(p => p.state === "done").reduce((a, p) => a + p.amount, 0)
+    + DB.directPayouts.filter(p => p.state === "done").reduce((a, p) => a + p.amount, 0);
   const active = DB.students.filter(s => s.status !== "enrolled").length;
   const subs = DB.students.reduce((a, s) => a + s.monthlySupporters, 0);
 
   document.getElementById("kpis").innerHTML = `
     <div class="stat-tile"><div class="val">${fmtUAH(totalEscrow)}</div><div class="lbl">на ескроу-рахунку зараз</div><div class="delta">↑ 8% за тиждень</div></div>
-    <div class="stat-tile"><div class="val">${fmtUAH(totalPaid)}</div><div class="lbl">виплачено університетам</div><div class="delta">↑ 2 виплати цього місяця</div></div>
+    <div class="stat-tile"><div class="val">${fmtUAH(totalPaid)}</div><div class="lbl">виплачено (заклади + студенти)</div><div class="delta">↑ 2 виплати цього місяця</div></div>
     <div class="stat-tile"><div class="val">${active}</div><div class="lbl">активних зборів</div><div class="delta">↑ ${pendingCount()} заявки на модерації</div></div>
     <div class="stat-tile"><div class="val">${subs}</div><div class="lbl">активних підписок на студентів</div><div class="delta">↑ 14 за місяць</div></div>`;
 
@@ -195,17 +196,30 @@ function renderScholarshipsAdmin() {
 /* ---------- Виплати ---------- */
 function renderPayouts() {
   const el = document.getElementById("pay-rows");
-  if (!el) return;
-  el.innerHTML = DB.payouts.map(p => `
-    <tr>
-      <td>${p.date}</td>
-      <td class="strong">${p.university}</td>
-      <td>${p.student}</td>
-      <td>${p.purpose}</td>
-      <td class="num strong">${fmtUAH(p.amount)}</td>
-      <td>${p.state === "done" ? '<span class="pill done">✓ Виконано</span>' : '<span class="pill scheduled">🕐 Заплановано</span>'}</td>
-      <td>${p.doc}</td>
-    </tr>`).join("");
+  if (el) {
+    el.innerHTML = DB.payouts.map(p => `
+      <tr>
+        <td>${p.date}</td>
+        <td class="strong">${p.university}</td>
+        <td>${p.student}</td>
+        <td>${p.purpose}</td>
+        <td class="num strong">${fmtUAH(p.amount)}</td>
+        <td>${p.state === "done" ? '<span class="pill done">✓ Виконано</span>' : '<span class="pill scheduled">🕐 Заплановано</span>'}</td>
+        <td>${p.doc}</td>
+      </tr>`).join("");
+  }
+  const elDirect = document.getElementById("direct-pay-rows");
+  if (elDirect) {
+    elDirect.innerHTML = DB.directPayouts.map(p => `
+      <tr>
+        <td>${p.date}</td>
+        <td class="strong">${p.recipient}</td>
+        <td>${p.purpose}</td>
+        <td class="num strong">${fmtUAH(p.amount)}</td>
+        <td>${p.state === "done" ? '<span class="pill done">✓ Виконано</span>' : '<span class="pill scheduled">🕐 Заплановано</span>'}</td>
+        <td>${p.doc}</td>
+      </tr>`).join("");
+  }
 }
 
 function renderAll() {

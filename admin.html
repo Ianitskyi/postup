@@ -6,7 +6,7 @@
 <title>Адмін-панель — Поступ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=7">
+<link rel="stylesheet" href="css/styles.css?v=8">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
 </head>
 <body class="admin-body">
@@ -21,7 +21,7 @@
       <button onclick="showView('campaigns', this)">🎯 Збори</button>
       <button onclick="showView('donations', this)">💛 Донати</button>
       <button onclick="showView('scholarships', this)">🏅 Стипендії</button>
-      <button onclick="showView('payouts', this)">🏛️ Виплати вишам</button>
+      <button onclick="showView('payouts', this)">🏛️ Виплати</button>
     </nav>
     <div class="side-foot">
       Демо-режим · дані вигадані<br>
@@ -97,13 +97,26 @@
     <!-- ВИПЛАТИ -->
     <section id="view-payouts" style="display:none">
       <div class="admin-head">
-        <div><h1>Виплати університетам</h1><div class="sub">Перекази з ескроу-рахунку на рахунки навчальних закладів</div></div>
+        <div><h1>Виплати</h1><div class="sub">Два окремі потоки: оплата вступу закладам освіти і регулярні стипендії напряму студентам</div></div>
       </div>
-      <div class="admin-note">🏦 Виплата створюється автоматично після підтвердження наказу про зарахування і підписується двома адміністраторами.</div>
+
+      <div class="admin-note">🏦 Виплата закладу освіти створюється автоматично після підтвердження наказу про зарахування і підписується двома адміністраторами.</div>
       <div class="awrap tbl-scroll">
+        <h2>Оплата вступу — закладам освіти</h2>
+        <div class="sub" style="margin-bottom:12px">Разовий контракт першого курсу</div>
         <table class="tbl">
-          <thead><tr><th>Дата</th><th>Університет</th><th>Студент / програма</th><th>Призначення</th><th class="num">Сума</th><th>Статус</th><th>Платіжка</th></tr></thead>
+          <thead><tr><th>Дата</th><th>Заклад освіти</th><th>Студент / програма</th><th>Призначення</th><th class="num">Сума</th><th>Статус</th><th>Платіжка</th></tr></thead>
           <tbody id="pay-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="admin-note">👤 Регулярні стипендії йдуть напряму на банківський рахунок студента, минаючи заклад освіти — після перевірки поданого студентом підтвердження успішності.</div>
+      <div class="awrap tbl-scroll">
+        <h2>Регулярні стипендії — напряму студентам</h2>
+        <div class="sub" style="margin-bottom:12px">Харчування, проживання (зокрема гуртожиток), матеріали — щомісяця</div>
+        <table class="tbl">
+          <thead><tr><th>Дата</th><th>Отримувач</th><th>Призначення</th><th class="num">Сума</th><th>Статус</th><th>Платіжка</th></tr></thead>
+          <tbody id="direct-pay-rows"></tbody>
         </table>
       </div>
     </section>
@@ -111,8 +124,8 @@
   </main>
 </div>
 
-<script src="js/data.js?v=7"></script>
-<script src="js/app.js?v=7"></script>
-<script src="js/admin.js?v=7"></script>
+<script src="js/data.js?v=8"></script>
+<script src="js/app.js?v=8"></script>
+<script src="js/admin.js?v=8"></script>
 </body>
 </html>

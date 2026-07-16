@@ -40,15 +40,15 @@ We don't compete with existing funds (Believe in Yourself, the Pinchuk Foundatio
 
 The mechanism differs for two types of support — and that's not a contradiction, it's a clear line between **admission** and **during studies**.
 
-**Funds for admission (tuition contract, initial dormitory payment) — never to the student's card:**
+**Funds for admission (tuition contract) — never to the student's card:**
 
 1. The donation goes to a dedicated **escrow account** at a partner bank — separate accounting for each campaign.
 2. The applicant passes the competition and receives an **enrollment order** (verified against Ukraine's open EDEBO registry).
-3. The platform transfers the funds **directly to the institution's account** — for tuition and dormitory.
+3. The platform transfers the funds **directly to the institution's account** — for tuition.
 
 The student cannot withdraw these funds as cash; the platform cannot spend them on itself.
 
-**A recurring stipend during studies (food, housing, materials) — directly to the student:**
+**A recurring stipend during studies (food, housing — including dormitory fees, materials) — directly to the student:**
 
 This is no longer an admission payment but ongoing living support for someone already enrolled — so the platform transfers it directly to the student's bank account, without the institution's involvement. In exchange, the scholar submits proof of academic progress each semester (a grade transcript or academic standing certificate), which the platform verifies before continuing payments for the next semester.
 
