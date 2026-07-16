@@ -514,6 +514,22 @@ a:hover { text-decoration: underline; }
 
 .admin-note { background: var(--accent-soft); border-radius: 12px; padding: 12px 16px; font-size: 13.5px; color: var(--accent-ink); margin-bottom: 20px; }
 
+/* ---------- Редактор текстів сайту ---------- */
+.editor-toolbar { position: sticky; top: 0; z-index: 5; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 14px 18px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 24px; }
+.editor-toolbar .spacer { flex: 1; }
+#changed-count { font-size: 13px; color: var(--accent-ink); font-weight: 600; }
+.editor-group { margin-bottom: 30px; }
+.editor-group h2 { font-size: 16px; margin-bottom: 12px; color: var(--ink); }
+.field-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; }
+.field-label { font-size: 12px; font-weight: 700; color: var(--ink-2); letter-spacing: .02em; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.field-toolbar button { border: none; background: var(--surface-2); border-radius: 6px; padding: 3px 9px; font-size: 12px; cursor: pointer; margin-left: 4px; }
+.field-toolbar button:hover { background: var(--brand-soft); }
+.field-editable { border: 1.5px dashed var(--line); border-radius: 8px; padding: 10px 12px; font-size: 14.5px; line-height: 1.55; min-height: 20px; outline: none; }
+.field-editable:focus { border-color: var(--brand); border-style: solid; }
+.field-editable.changed { border-color: var(--accent); background: #fffbea; }
+.status-log { font-size: 13px; color: var(--ink-2); margin-top: 10px; white-space: pre-line; max-height: 160px; overflow-y: auto; }
+#unsupported { background: var(--danger-soft); color: var(--danger); border-radius: 12px; padding: 16px 20px; font-size: 14px; }
+
 /* ---------- Адаптив ---------- */
 @media (max-width: 1000px) {
   .hero-grid { grid-template-columns: 1fr; gap: 32px; }

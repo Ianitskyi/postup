@@ -7,7 +7,7 @@
 <meta name="description" content="Поступ — крок до вступу. Платформа, де благодійники цільово фінансують навчання талановитих вступників у ліцензовані державою українські заклади освіти. Кошти на вступ передаються напряму закладу освіти.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=12">
+<link rel="stylesheet" href="css/styles.css?v=13">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='white'/><path d='M12 3L1 9l11 6 9-4.909V17h2V9L12 3z' fill='black'/><path d='M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z' fill='black'/></svg>">
 </head>
 <body>
@@ -26,9 +26,9 @@
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <div class="eyebrow">Поступ — крок до вступу</div>
-      <h1>Талант знайшовся.<br>Допоможіть йому <em>вступити</em> та <em>навчитися</em>.</h1>
-      <p class="lead">Платформа цільових зборів на навчання в ліцензованих українських закладах освіти. Кошти на вступ ідуть <b>напряму закладу</b>, а не на картку.</p>
+      <div class="eyebrow" data-edit="index.hero.eyebrow">Поступ — крок до вступу</div>
+      <h1 data-edit="index.hero.title">Талант знайшовся.<br>Допоможіть йому <em>вступити</em> та <em>навчитися</em>.</h1>
+      <p class="lead" data-edit="index.hero.lead">Платформа цільових зборів на навчання в ліцензованих українських закладах освіти. Кошти на вступ ідуть <b>напряму закладу</b>, а не на картку.</p>
       <div class="hero-paths">
         <a class="path-btn donor" href="students.html">
           <span class="pi">💛</span>
@@ -83,32 +83,32 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="eyebrow">Прозорість понад усе</div>
-        <h2>Гроші на вступ — лише на рахунок закладу освіти</h2>
+        <div class="eyebrow" data-edit="index.escrow.eyebrow">Прозорість понад усе</div>
+        <h2 data-edit="index.escrow.title">Гроші на вступ — лише на рахунок закладу освіти</h2>
       </div>
     </div>
     <div class="escrow-band">
-      <h2>Як рухаються кошти на вступ</h2>
-      <p style="margin-top:8px;max-width:70ch">Пожертви на оплату контракту акумулюються на цільовому ескроу-рахунку і розблоковуються тільки після наказу про зарахування — напряму на рахунок навчального закладу. Студент не отримує ці кошти на картку.</p>
+      <h2 data-edit="index.escrow.subtitle">Як рухаються кошти на вступ</h2>
+      <p style="margin-top:8px;max-width:70ch" data-edit="index.escrow.intro">Пожертви на оплату контракту акумулюються на цільовому ескроу-рахунку і розблоковуються тільки після наказу про зарахування — напряму на рахунок навчального закладу. Студент не отримує ці кошти на картку.</p>
       <div class="escrow-flow">
-        <div class="escrow-node"><div class="t">💛 Благодійник</div><div class="d">Обирає мету: людину, професію, заклад освіти або власний критерій. Разово чи підпискою.</div></div>
+        <div class="escrow-node"><div class="t">💛 Благодійник</div><div class="d" data-edit="index.escrow.node.donor">Обирає мету: людину, професію, заклад освіти або власний критерій. Разово чи підпискою.</div></div>
         <div class="escrow-arrow">➔</div>
-        <div class="escrow-node"><div class="t">🏦 Ескроу-рахунок</div><div class="d">Кошти зберігаються на цільовому рахунку банку-партнера до моменту зарахування.</div></div>
+        <div class="escrow-node"><div class="t">🏦 Ескроу-рахунок</div><div class="d" data-edit="index.escrow.node.escrow">Кошти зберігаються на цільовому рахунку банку-партнера до моменту зарахування.</div></div>
         <div class="escrow-arrow">➔</div>
-        <div class="escrow-node"><div class="t">🏛️ Заклад освіти</div><div class="d">Після наказу про зарахування платформа переказує кошти на рахунок закладу — за контракт.</div></div>
+        <div class="escrow-node"><div class="t">🏛️ Заклад освіти</div><div class="d" data-edit="index.escrow.node.institution">Після наказу про зарахування платформа переказує кошти на рахунок закладу — за контракт.</div></div>
       </div>
       <div class="guarantee dark" style="max-width:720px;margin-top:16px">
         <div class="gi">📆</div>
         <div>
-          <b>А стипендія на час навчання?</b>
-          <span>Щомісячна підтримка (харчування, проживання, матеріали) — це вже не оплата вступу, тому надходить <u>напряму на рахунок студента</u>. Стипендіат самостійно звітує про свій академічний поступ (оцінки, довідка про успішність), а платформа перевіряє це звітування.</span>
+          <b data-edit="index.guarantee.stipend.title">А стипендія на час навчання?</b>
+          <span data-edit="index.guarantee.stipend.text">Щомісячна підтримка (харчування, проживання, матеріали) — це вже не оплата вступу, тому надходить <u>напряму на рахунок студента</u>. Стипендіат самостійно звітує про свій академічний поступ (оцінки, довідка про успішність), а платформа перевіряє це звітування.</span>
         </div>
       </div>
       <div class="guarantee dark" style="max-width:720px">
         <div class="gi">🛡️</div>
         <div>
-          <b>Що як вступ не відбудеться, збір не завершиться — або студент пройде на бюджет?</b>
-          <span>Ви заздалегідь розставляєте пріоритети: <u>залишити студенту щомісячною стипендією</u>, передати іншому вступнику чи <u>повернути 100%</u> — без жодних утримань: комісію 1% не беремо, банківські комісії покриває платформа. <a href="how-it-works.html#faq" style="color:#8fe7b4">Відповіді у FAQ</a></span>
+          <b data-edit="index.guarantee.refund.title">Що як вступ не відбудеться, збір не завершиться — або студент пройде на бюджет?</b>
+          <span data-edit="index.guarantee.refund.text">Ви заздалегідь розставляєте пріоритети: <u>залишити студенту щомісячною стипендією</u>, передати іншому вступнику чи <u>повернути 100%</u> — без жодних утримань: комісію 1% не беремо, банківські комісії покриває платформа. <a href="how-it-works.html#faq" style="color:#8fe7b4">Відповіді у FAQ</a></span>
         </div>
       </div>
     </div>
@@ -125,10 +125,10 @@
       <a class="btn btn-ghost" href="how-it-works.html">Детальніше ➔</a>
     </div>
     <div class="steps">
-      <div class="step"><div class="num">1</div><h3>Вступник створює профіль</h3><p>Мотиваційний лист, відеовізитка, оцінки НМТ, перемоги на олімпіадах, творчі доробки та рекомендації.</p></div>
-      <div class="step"><div class="num">2</div><h3>Платформа верифікує</h3><p>Перевіряємо особу, документи, результати та рекомендації. Публікуємо тільки підтверджені профілі.</p></div>
-      <div class="step"><div class="num">3</div><h3>Благодійник обирає мету</h3><p>Конкретна людина, професія, заклад освіти, соціальний критерій — або власна іменна стипендія.</p></div>
-      <div class="step"><div class="num">4</div><h3>Кошти йдуть далі</h3><p>Оплата вступу — напряму закладу освіти. Регулярна стипендія — напряму студенту, який сам звітує про навчання щосеместру.</p></div>
+      <div class="step"><div class="num">1</div><h3 data-edit="index.step1.title">Вступник створює профіль</h3><p data-edit="index.step1.text">Мотиваційний лист, відеовізитка, оцінки НМТ, перемоги на олімпіадах, творчі доробки та рекомендації.</p></div>
+      <div class="step"><div class="num">2</div><h3 data-edit="index.step2.title">Платформа верифікує</h3><p data-edit="index.step2.text">Перевіряємо особу, документи, результати та рекомендації. Публікуємо тільки підтверджені профілі.</p></div>
+      <div class="step"><div class="num">3</div><h3 data-edit="index.step3.title">Благодійник обирає мету</h3><p data-edit="index.step3.text">Конкретна людина, професія, заклад освіти, соціальний критерій — або власна іменна стипендія.</p></div>
+      <div class="step"><div class="num">4</div><h3 data-edit="index.step4.title">Кошти йдуть далі</h3><p data-edit="index.step4.text">Оплата вступу — напряму закладу освіти. Регулярна стипендія — напряму студенту, який сам звітує про навчання щосеместру.</p></div>
     </div>
   </div>
 </section>
@@ -137,13 +137,13 @@
   <div class="container">
     <div class="cta-split">
       <div class="cta-box donor">
-        <h3>💛 Я хочу підтримати</h3>
-        <p>Оберіть вступника, професію чи заклад освіти — або заснуйте стипендію з власною назвою. Від 200 ₴ разово чи підпискою. Ви бачитимете, як ваш студент навчається.</p>
+        <h3 data-edit="index.cta.donor.title">💛 Я хочу підтримати</h3>
+        <p data-edit="index.cta.donor.text">Оберіть вступника, професію чи заклад освіти — або заснуйте стипендію з власною назвою. Від 200 ₴ разово чи підпискою. Ви бачитимете, як ваш студент навчається.</p>
         <a class="btn btn-primary" href="students.html">Знайти свого студента</a>
       </div>
       <div class="cta-box student">
-        <h3>🎓 Я вступаю на навчання</h3>
-        <p>Створіть профіль, розкажіть свою історію, додайте досягнення. Верифікація безплатна. Комісія платформи — лише 1% на адміністрування.</p>
+        <h3 data-edit="index.cta.student.title">🎓 Я вступаю на навчання</h3>
+        <p data-edit="index.cta.student.text">Створіть профіль, розкажіть свою історію, додайте досягнення. Верифікація безплатна. Комісія платформи — лише 1% на адміністрування.</p>
         <a class="btn btn-accent" href="apply.html">Створити профіль</a>
       </div>
     </div>
@@ -174,8 +174,8 @@
   </div>
 </footer>
 
-<script src="js/data.js?v=12"></script>
-<script src="js/app.js?v=12"></script>
+<script src="js/data.js?v=13"></script>
+<script src="js/app.js?v=13"></script>
 <script>initHome();</script>
 </body>
 </html>

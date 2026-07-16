@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Редактор текстів — Поступ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=13">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+</head>
+<body class="admin-body">
+
+<div class="admin-layout">
+
+  <aside class="admin-side">
+    <a class="logo" href="index.html"><span class="logo-mark"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3L1 9l11 6 9-4.909V17h2V9L12 3z" fill="#111"/><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#111"/></svg></span> Поступ · Адмін</a>
+    <nav>
+      <a href="admin.html" style="display:block;padding:10px 12px;border-radius:10px;color:#c7cbe0;text-decoration:none;font-weight:600;font-size:14px">📊 Дашборд і дані</a>
+      <button class="active" onclick="void 0">✏️ Тексти сайту</button>
+    </nav>
+    <div class="side-foot">
+      Демо-режим · дані вигадані<br>
+      <a href="index.html">На сайт ➔</a>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-head">
+      <div><h1>Редактор текстів сайту</h1><div class="sub">Редагуй маркетингові фрази, заголовки й FAQ вручну — без звернень до Клода</div></div>
+    </div>
+
+    <div id="unsupported" style="display:none">
+      ⚠️ Твій браузер не підтримує пряме збереження файлів на диск (File System Access API). Відкрий цю сторінку в <b>Chrome</b> або <b>Edge</b> на комп'ютері — у Firefox/Safari та на телефоні редактор не працюватиме.
+    </div>
+
+    <div id="supported-ui">
+      <div class="admin-note">
+        ℹ️ Як це працює: обери теку сайту на своєму комп'ютері (де лежать <code>index.html</code>, <code>css</code>, <code>js</code> тощо) — редактор прочитає тексти напряму з файлів. Після редагування натисни «Зберегти зміни» — редактор запише їх назад у ці ж файли. <b>Це зберігає зміни лише на твоєму комп'ютері.</b> Щоб вони зʼявились на живому сайті — повідом Клода, що зробив правки, і попроси запушити на GitHub, як завжди.
+      </div>
+
+      <div class="editor-toolbar">
+        <button class="btn btn-primary btn-sm" id="btn-pick">📂 Обрати теку сайту</button>
+        <span id="dir-status" style="font-size:13.5px;color:var(--ink-2)">Теку ще не обрано</span>
+        <span class="spacer"></span>
+        <span id="changed-count"></span>
+        <button class="btn btn-accent btn-sm" id="btn-save" disabled>💾 Зберегти зміни</button>
+      </div>
+
+      <div id="fields-root"></div>
+
+      <div class="awrap" style="margin-top:20px">
+        <h2>Журнал дій</h2>
+        <div class="status-log" id="status-log"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/content-editor.js?v=13"></script>
+</body>
+</html>
