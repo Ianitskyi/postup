@@ -75,10 +75,6 @@ For recurring scholarships (subscriptions, named scholarships for the whole dura
 - One-time donors receive a final report (enrollment order + payment confirmation); subscribers receive per-semester study reports.
 - Year after year, a reputational history of the student accumulates — from application to diploma.
 
-## Metrics we report on
-
-Published annually: number of verified applicants, campaign-to-enrollment conversion rate, share of funds that reached the institution (target 99%), subscriber retention, and the share of scholars who passed their semester. First real figures will follow the pilot with 3–5 applicants.
-
 ## For educational institutions
 
 Universities, academies, institutes, colleges, and technical schools gain **motivated tuition-paying students whose education is already funded**, at no cost to them. Partnership is not a condition for payouts (third-party payment of tuition is standard practice), but it speeds up the process. The institution never sees or administers recurring stipends — those go directly to students — so partnership adds no ongoing administrative work. Three levels: memorandum → operational integration → strategic partnership.
