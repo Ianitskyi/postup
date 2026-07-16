@@ -74,9 +74,10 @@ a:hover { text-decoration: underline; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--ink); text-decoration: none !important; letter-spacing: -.02em; }
 .logo-mark {
   width: 34px; height: 34px; border-radius: 10px; flex: none;
-  background: linear-gradient(135deg, var(--brand) 0%, #5a76f0 55%, var(--accent) 130%);
-  display: grid; place-items: center; color: #fff; font-size: 16px;
+  background: #fff; border: 1.5px solid var(--line);
+  display: grid; place-items: center; color: #111; font-size: 16px;
 }
+.logo-mark svg { display: block; }
 .main-nav { display: flex; gap: 4px; margin-left: auto; }
 .main-nav a {
   padding: 9px 14px; border-radius: 10px; color: var(--ink-2);
