@@ -45,7 +45,49 @@ function renderDashboard() {
     <div class="stat-tile"><div class="val">${subs}</div><div class="lbl">активних підписок на студентів</div><div class="delta">↑ 14 за місяць</div></div>`;
 
   drawChart();
+  drawMoneyFlowChart();
   renderCampaigns("dash-campaigns", 5);
+}
+
+/* Донат-діаграма: скільки вже виплачено закладам, скільки студентам напряму, скільки ще на ескроу */
+function drawMoneyFlowChart() {
+  const box = document.getElementById("flow-chart");
+  if (!box) return;
+  const toInstitutions = DB.payouts.filter(p => p.state === "done").reduce((a, p) => a + p.amount, 0);
+  const toStudents = DB.directPayouts.filter(p => p.state === "done").reduce((a, p) => a + p.amount, 0);
+  const onEscrow = DB.donationsFeed.filter(d => d.state === "escrow").reduce((a, d) => a + d.amount, 0)
+    + DB.students.filter(s => s.status !== "enrolled").reduce((a, s) => a + s.raised, 0);
+  const segments = [
+    { label: "Закладам освіти (оплата вступу)", value: toInstitutions, color: "#2a78d6" },
+    { label: "Напряму студентам (стипендії)", value: toStudents, color: "#f2a91f" },
+    { label: "Ще на ескроу (очікує рішення)", value: onEscrow, color: "#c3c2b7" }
+  ];
+  const total = segments.reduce((a, s) => a + s.value, 0);
+  const R = 70, C = 2 * Math.PI * R, cx = 90, cy = 90;
+  let offset = 0;
+  const circles = segments.map(seg => {
+    const frac = total ? seg.value / total : 0;
+    const dash = frac * C;
+    const circle = `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${seg.color}" stroke-width="24"
+      stroke-dasharray="${dash} ${C - dash}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})"/>`;
+    offset += dash;
+    return circle;
+  }).join("");
+  box.innerHTML = `
+    <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap">
+      <svg viewBox="0 0 180 180" width="180" height="180">
+        ${circles}
+        <text x="90" y="86" text-anchor="middle" font-size="12.5" fill="var(--muted)" font-family="Inter,system-ui,sans-serif">Разом</text>
+        <text x="90" y="106" text-anchor="middle" font-size="16" font-weight="800" fill="var(--ink)" font-family="Inter,system-ui,sans-serif">${fmtUAH(total)}</text>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:10px;flex:1;min-width:220px">
+        ${segments.map(seg => `
+          <div style="display:flex;justify-content:space-between;gap:16px;font-size:13.5px">
+            <span style="display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:3px;background:${seg.color};display:inline-block;flex:none"></span>${seg.label}</span>
+            <b style="white-space:nowrap">${fmtUAH(seg.value)} · ${total ? Math.round(seg.value / total * 100) : 0}%</b>
+          </div>`).join("")}
+      </div>
+    </div>`;
 }
 
 /* Лінійний графік донатів по місяцях: одна серія, hover-підказка */
@@ -143,7 +185,7 @@ function renderApplications() {
       </div>
       <div class="mod-actions">
         ${st === "pending" ? `
-          <button class="btn btn-sm btn-good" ${allOk ? "" : 'title="Не всі перевірки пройдено"'} onclick="decideApp('${a.id}','approved')">✓ Опублікувати</button>
+          <button class="btn btn-sm btn-good" ${allOk ? "" : 'disabled title="Спочатку пройдіть усі перевірки нижче"'} onclick="decideApp('${a.id}','approved')">✓ Опублікувати</button>
           <button class="btn btn-sm btn-light" onclick="decideApp('${a.id}','info')">? Запит документів</button>
           <button class="btn btn-sm btn-danger" onclick="decideApp('${a.id}','rejected')">✗ Відхилити</button>`
         : st === "approved" ? `<span class="pill done">✓ Опубліковано</span><button class="btn btn-sm btn-light" onclick="decideApp('${a.id}','pending')">Повернути</button>`

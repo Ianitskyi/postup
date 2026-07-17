@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=23">
+<link rel="stylesheet" href="css/styles.css?v=25">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
 </head>
 <body class="admin-body">
@@ -46,6 +46,11 @@
         <div class="chart-box" id="chart"></div>
       </div>
       <div class="awrap">
+        <h2>Куди йдуть гроші</h2>
+        <div class="sub">Заклади освіти, студенти напряму та ще не розподілене на ескроу</div>
+        <div id="flow-chart"></div>
+      </div>
+      <div class="awrap">
         <h2>Найближчі до цілі збори</h2>
         <div class="sub">Топ-5 за відсотком виконання</div>
         <div id="dash-campaigns"></div>
@@ -57,7 +62,7 @@
       <div class="admin-head">
         <div><h1>Заявки на модерації</h1><div class="sub">Профіль публікується лише після проходження всіх перевірок</div></div>
       </div>
-      <div class="admin-note">💡 Кнопка «Опублікувати» активна завжди у демо, але в робочій версії вимагатиме проходження всіх пунктів верифікації.</div>
+      <div class="admin-note">💡 Кнопка «Опублікувати» активна лише тоді, коли пройдені всі пункти перевірки нижче — спробуйте на заявці з червоним ✗.</div>
       <div class="awrap"><div id="app-list"></div></div>
     </section>
 
@@ -112,7 +117,7 @@
         </table>
       </div>
 
-      <div class="admin-note">👤 Регулярні стипендії йдуть напряму на банківський рахунок студента, минаючи заклад освіти — після перевірки поданого студентом підтвердження успішності.</div>
+      <div class="admin-note">👤 Регулярні стипендії йдуть напряму на банківський рахунок студента, минаючи заклад освіти — щомісяця, без академічних умов, доки студент лишається студентом і кошти фонду не вичерпані.</div>
       <div class="awrap tbl-scroll">
         <h2>Регулярні стипендії — напряму студентам</h2>
         <div class="sub" style="margin-bottom:12px">Харчування, проживання, матеріали — щомісяця, напряму на рахунок студента</div>
@@ -126,8 +131,8 @@
   </main>
 </div>
 
-<script src="js/data.js?v=23"></script>
-<script src="js/app.js?v=23"></script>
-<script src="js/admin.js?v=23"></script>
+<script src="js/data.js?v=25"></script>
+<script src="js/app.js?v=25"></script>
+<script src="js/admin.js?v=25"></script>
 </body>
 </html>
