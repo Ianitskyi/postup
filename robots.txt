@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin-content.html
+
+Sitemap: https://ianitskyi.github.io/postup/sitemap.xml

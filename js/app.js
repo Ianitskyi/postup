@@ -131,7 +131,7 @@ function initProfile() {
   document.getElementById("p-main").innerHTML = `
     ${s.video ? `
     <div class="panel">
-      <div class="video-ph" onclick="openModal('🎬','Відеовізитка','У прототипі відео не завантажене — тут відтворюватиметься 2-хвилинна візитка вступника.')">
+      <div class="video-ph" role="button" tabindex="0" aria-label="Відтворити відеовізитку" onclick="openModal('🎬','Відеовізитка','У прототипі відео не завантажене — тут відтворюватиметься 2-хвилинна візитка вступника.')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="play">▶</div>
         <div class="cap">Відеовізитка · 2 хв</div>
       </div>
