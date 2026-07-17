@@ -387,10 +387,10 @@ a:hover { text-decoration: underline; }
 .faq h2.group { margin: 30px 0 14px; font-size: 20px; letter-spacing: -.01em; }
 
 /* Політики */
-.policy h2 { font-size: 22px; margin: 34px 0 12px; letter-spacing: -.01em; }
-.policy h3 { font-size: 16px; margin: 18px 0 6px; }
-.policy p, .policy li { color: var(--ink-2); font-size: 14.5px; line-height: 1.65; }
-.policy ul { padding-left: 22px; margin: 8px 0; }
+.policy-body h2 { font-size: 22px; margin: 34px 0 12px; letter-spacing: -.01em; }
+.policy-body h3 { font-size: 16px; margin: 18px 0 6px; }
+.policy-body p, .policy-body li { color: var(--ink-2); font-size: 14.5px; line-height: 1.65; }
+.policy-body ul { padding-left: 22px; margin: 8px 0; }
 
 /* Гарантія повернення — головний блок довіри */
 .guarantee {
