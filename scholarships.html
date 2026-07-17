@@ -6,7 +6,7 @@
 <title>Стипендії — Поступ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=14">
+<link rel="stylesheet" href="css/styles.css?v=16">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='white'/><path d='M12 3L1 9l11 6 9-4.909V17h2V9L12 3z' fill='black'/><path d='M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z' fill='black'/></svg>">
 </head>
 <body>
@@ -26,9 +26,9 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="eyebrow">💛 Розділ для благодійників · Стипендії</div>
-        <h2>Стипендійні фонди «Поступу»</h2>
-        <p class="sub">Стипендія — це фонд, з якого регулярно чи разово підтримують вступників за певними критеріями. Ви можете <b>доєднатися до наявного фонду</b> будь-яким внеском — або <b>заснувати власну стипендію</b> з вашою назвою та критеріями (пам'яті близької людини, від компанії, для певної професії чи громади).</p>
+        <div class="eyebrow" data-edit="sch.intro.eyebrow">💛 Розділ для благодійників · Стипендії</div>
+        <h2 data-edit="sch.intro.title">Стипендійні фонди «Поступу»</h2>
+        <p class="sub" data-edit="sch.intro.sub">Стипендія — це фонд, з якого регулярно чи разово підтримують вступників за певними критеріями. Ви можете <b>доєднатися до наявного фонду</b> будь-яким внеском — або <b>заснувати власну стипендію</b> з вашою назвою та критеріями (пам'яті близької людини, від компанії, для певної професії чи громади).</p>
         <div class="hero-actions" style="margin-top:20px">
           <a class="btn btn-accent" href="#create">🏅 Заснувати свою стипендію</a>
           <a class="btn btn-ghost" href="#funds">💛 Поповнити наявний фонд</a>
@@ -38,9 +38,9 @@
 
     <div class="section-head" id="funds" style="margin-top:36px;margin-bottom:18px">
       <div>
-        <div class="eyebrow">Доєднуйтесь</div>
-        <h2 style="font-size:24px">Наявні фонди — підтримайте внеском</h2>
-        <p class="sub">Кожен фонд можна поповнити разово чи підпискою. Внесок збільшує кількість студентів, яких стипендія підтримає.</p>
+        <div class="eyebrow" data-edit="sch.funds.eyebrow">Доєднуйтесь</div>
+        <h2 style="font-size:24px" data-edit="sch.funds.title">Наявні фонди — підтримайте внеском</h2>
+        <p class="sub" data-edit="sch.funds.sub">Кожен фонд можна поповнити разово чи підпискою. Внесок збільшує кількість студентів, яких стипендія підтримає.</p>
       </div>
     </div>
     <div class="sch-grid" id="sch-list"></div>
@@ -50,13 +50,13 @@
 <section class="section" id="create" style="padding-top:0">
   <div class="container">
     <div class="escrow-band">
-      <h2>Заснуйте власну стипендію</h2>
-      <p style="margin-top:8px;max-width:70ch">Назва — ваша. Критерії — ваші. Адміністрування, пошук і верифікація отримувачів та звітність — наші. Стипендія буває двох форматів:</p>
+      <h2 data-edit="sch.create.title">Заснуйте власну стипендію</h2>
+      <p style="margin-top:8px;max-width:70ch" data-edit="sch.create.intro">Назва — ваша. Критерії — ваші. Адміністрування, пошук і верифікація отримувачів та звітність — наші. Стипендія буває двох форматів:</p>
       <div class="escrow-flow" style="margin-top:20px;grid-template-columns:1fr 1fr">
-        <div class="escrow-node"><div class="t">🎯 Разова — на вступ</div><div class="d">Одноразово закриває контракт першого року обраних кандидатів — кошти йдуть напряму закладу освіти. Людина зарахована — мету досягнуто, ви отримуєте фінальний звіт.</div></div>
-        <div class="escrow-node"><div class="t">📆 Регулярна — на час навчання</div><div class="d">Щомісячні виплати напряму стипендіатам: харчування, проживання, матеріали. Триває, поки стипендіат лишається студентом і кошти фонду не вичерпані — без академічних умов.</div></div>
+        <div class="escrow-node"><div class="t">🎯 Разова — на вступ</div><div class="d" data-edit="sch.create.oneTime">Одноразово закриває контракт першого року обраних кандидатів — кошти йдуть напряму закладу освіти. Людина зарахована — мету досягнуто, ви отримуєте фінальний звіт.</div></div>
+        <div class="escrow-node"><div class="t">📆 Регулярна — на час навчання</div><div class="d" data-edit="sch.create.recurring">Щомісячні виплати напряму стипендіатам: харчування, проживання, матеріали. Триває, поки стипендіат лишається студентом і кошти фонду не вичерпані — без академічних умов.</div></div>
       </div>
-      <p style="margin-top:22px;color:#c6cdf1;font-size:13.5px">Мінімальний фонд — 36 000 ₴. Ми відбираємо кандидатів за вашими критеріями, ви затверджуєте.</p>
+      <p style="margin-top:22px;color:#c6cdf1;font-size:13.5px" data-edit="sch.create.minFund">Мінімальний фонд — 36 000 ₴. Ми відбираємо кандидатів за вашими критеріями, ви затверджуєте.</p>
       <div style="margin-top:20px">
         <button class="btn btn-accent" onclick="openModal('📝','Заявка на стипендію (демо)','У робочій версії тут відкриється форма: назва стипендії, критерії відбору, розмір і тривалість виплат, спосіб поповнення фонду. Команда платформи зв\'яжеться протягом 2 робочих днів.')">Подати заявку на заснування</button>
       </div>
@@ -73,8 +73,8 @@
   </div>
 </footer>
 
-<script src="js/data.js?v=14"></script>
-<script src="js/app.js?v=14"></script>
+<script src="js/data.js?v=16"></script>
+<script src="js/app.js?v=16"></script>
 <script>initScholarships();</script>
 </body>
 </html>

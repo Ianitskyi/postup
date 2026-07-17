@@ -6,7 +6,7 @@
 <title>Я вступник — Поступ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=14">
+<link rel="stylesheet" href="css/styles.css?v=16">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='white'/><path d='M12 3L1 9l11 6 9-4.909V17h2V9L12 3z' fill='black'/><path d='M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z' fill='black'/></svg>">
 </head>
 <body>
@@ -26,21 +26,21 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="eyebrow">🎓 Розділ для вступників</div>
-        <h2>Отримайте підтримку на навчання</h2>
-        <p class="sub">Вступаєте в університет, академію, інститут, коледж чи технікум — ліцензований державою український заклад освіти? Оберіть один із двох шляхів, або скористайтеся обома одразу.</p>
+        <div class="eyebrow" data-edit="apply.intro.eyebrow">🎓 Розділ для вступників</div>
+        <h2 data-edit="apply.intro.title">Отримайте підтримку на навчання</h2>
+        <p class="sub" data-edit="apply.intro.sub">Вступаєте в університет, академію, інститут, коледж чи технікум — ліцензований державою український заклад освіти? Оберіть один із двох шляхів, або скористайтеся обома одразу.</p>
       </div>
     </div>
 
     <div class="cta-split">
       <div class="cta-box student">
-        <h3>📢 Створити власний збір</h3>
-        <p>Розкажіть свою історію, додайте досягнення та рекомендації. Після безплатної верифікації профіль стане публічним — донори зможуть знайти й підтримати саме вас.</p>
+        <h3 data-edit="apply.cta.own.title">📢 Створити власний збір</h3>
+        <p data-edit="apply.cta.own.text">Розкажіть свою історію, додайте досягнення та рекомендації. Після безплатної верифікації профіль стане публічним — донори зможуть знайти й підтримати саме вас.</p>
         <button class="btn btn-accent" onclick="openModal('📨','Заявка вступника (демо)','У робочій версії тут відкриється покрокова форма реєстрації профілю вступника з завантаженням документів.')">Створити збір</button>
       </div>
       <div class="cta-box donor">
-        <h3>🏅 Податися на іменну стипендію</h3>
-        <p>Деякі благодійники вже заснували стипендії з власними критеріями — переглянте їх і подайтеся на ту, що вам підходить.</p>
+        <h3 data-edit="apply.cta.scholarship.title">🏅 Податися на іменну стипендію</h3>
+        <p data-edit="apply.cta.scholarship.text">Деякі благодійники вже заснували стипендії з власними критеріями — переглянте їх і подайтеся на ту, що вам підходить.</p>
         <a class="btn btn-primary" href="#scholarships-apply">Переглянути стипендії ↓</a>
       </div>
     </div>
@@ -51,9 +51,9 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="eyebrow">Стипендії</div>
-        <h2>Оберіть стипендію за своїми критеріями</h2>
-        <p class="sub">Кожна стипендія має власні критерії відбору — від соціальної категорії до спеціальності. Подайтеся на ту, що вам підходить.</p>
+        <div class="eyebrow" data-edit="apply.sch.eyebrow">Стипендії</div>
+        <h2 data-edit="apply.sch.title">Оберіть стипендію за своїми критеріями</h2>
+        <p class="sub" data-edit="apply.sch.sub">Кожна стипендія має власні критерії відбору — від соціальної категорії до спеціальності. Подайтеся на ту, що вам підходить.</p>
       </div>
     </div>
     <div class="sch-grid" id="sch-apply-list"></div>
@@ -63,12 +63,12 @@
 <section class="section" style="padding-top:0">
   <div class="container">
     <div class="panel">
-      <h2>Як це працює для вас — коротко</h2>
+      <h2 data-edit="apply.steps.title">Як це працює для вас — коротко</h2>
       <div class="steps" style="margin-top:16px">
-        <div class="step"><div class="num">1</div><h3>Заявка</h3><p>Розкажіть про себе: куди вступаєте, чому саме ця професія, яка сума потрібна.</p></div>
-        <div class="step"><div class="num">2</div><h3>Матеріали</h3><p>Мотиваційний лист, 2-хвилинна відеовізитка, досягнення, 1–2 рекомендації.</p></div>
-        <div class="step"><div class="num">3</div><h3>Верифікація</h3><p>Безплатна перевірка документів і результатів — зазвичай 3–5 робочих днів.</p></div>
-        <div class="step"><div class="num">4</div><h3>Збір і звіти</h3><p>Профіль публікується. Ви оновлюєте таймлайн вступу і звітуєте про навчання.</p></div>
+        <div class="step"><div class="num">1</div><h3 data-edit="apply.step1.title">Заявка</h3><p data-edit="apply.step1.text">Розкажіть про себе: куди вступаєте, чому саме ця професія, яка сума потрібна.</p></div>
+        <div class="step"><div class="num">2</div><h3 data-edit="apply.step2.title">Матеріали</h3><p data-edit="apply.step2.text">Мотиваційний лист, 2-хвилинна відеовізитка, досягнення, 1–2 рекомендації.</p></div>
+        <div class="step"><div class="num">3</div><h3 data-edit="apply.step3.title">Верифікація</h3><p data-edit="apply.step3.text">Безплатна перевірка документів і результатів — зазвичай 3–5 робочих днів.</p></div>
+        <div class="step"><div class="num">4</div><h3 data-edit="apply.step4.title">Збір і звіти</h3><p data-edit="apply.step4.text">Профіль публікується. Ви оновлюєте таймлайн вступу і звітуєте про навчання.</p></div>
       </div>
       <p style="margin-top:16px"><a href="how-it-works.html#for-applicants">Детальніше про верифікацію, звітність і умови стипендій →</a></p>
     </div>
@@ -84,8 +84,8 @@
   </div>
 </footer>
 
-<script src="js/data.js?v=14"></script>
-<script src="js/app.js?v=14"></script>
+<script src="js/data.js?v=16"></script>
+<script src="js/app.js?v=16"></script>
 <script>initApplyScholarships();</script>
 </body>
 </html>

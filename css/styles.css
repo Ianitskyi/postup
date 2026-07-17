@@ -527,6 +527,9 @@ a:hover { text-decoration: underline; }
 .field-editable { border: 1.5px dashed var(--line); border-radius: 8px; padding: 10px 12px; font-size: 14.5px; line-height: 1.55; min-height: 20px; outline: none; }
 .field-editable:focus { border-color: var(--brand); border-style: solid; }
 .field-editable.changed { border-color: var(--accent); background: #fffbea; }
+textarea.field-editable { width: 100%; font-family: inherit; resize: vertical; }
+button.field-toolbar { border: none; background: var(--surface-2); border-radius: 6px; padding: 3px 9px; font-size: 12px; cursor: pointer; }
+button.field-toolbar:hover { background: var(--brand-soft); }
 .status-log { font-size: 13px; color: var(--ink-2); margin-top: 10px; white-space: pre-line; max-height: 160px; overflow-y: auto; }
 #unsupported { background: var(--danger-soft); color: var(--danger); border-radius: 12px; padding: 16px 20px; font-size: 14px; }
 
