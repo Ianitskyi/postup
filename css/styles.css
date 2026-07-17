@@ -436,6 +436,8 @@ a:hover { text-decoration: underline; }
 .modal .emoji { font-size: 44px; }
 .modal h3 { font-size: 21px; margin: 12px 0 8px; }
 .modal p { color: var(--ink-2); font-size: 14.5px; }
+.modal .modal-extra:empty { display: none; }
+.modal .share-row { justify-content: center; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
 .modal .btn { margin-top: 20px; width: 100%; }
 
 /* ---------- Футер ---------- */

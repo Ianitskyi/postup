@@ -12,14 +12,14 @@ function avatarHtml(s, cls) {
 }
 
 /* ---------- Кнопки "Поділитися" (профілі, стипендії) ---------- */
-function shareRowHtml(url, title) {
+function shareRowHtml(url, title, label) {
   const u = encodeURIComponent(url);
   const t = encodeURIComponent(title);
   const tg = `https://t.me/share/url?url=${u}&text=${t}`;
   const fb = `https://www.facebook.com/sharer/sharer.php?u=${u}`;
   return `
     <div class="share-row">
-      <span class="share-label">Поділитися:</span>
+      <span class="share-label">${label || "Поділитися:"}</span>
       <a class="share-btn" href="${tg}" target="_blank" rel="noopener" title="Поділитися в Telegram">Telegram</a>
       <a class="share-btn" href="${fb}" target="_blank" rel="noopener" title="Поділитися у Facebook">Facebook</a>
       <button type="button" class="share-btn" onclick="copyShareLink('${url.replace(/'/g, "\\'")}', this)">Копіювати посилання</button>
@@ -345,12 +345,14 @@ function donate(studentId) {
     : "";
 
   const s = DB.students.find(x => x.id === studentId);
+  const profileUrl = `${location.origin}${location.pathname}?id=${s.id}`;
   openModal(
     donateType === "monthly" ? "💛" : "🎉",
     donateType === "monthly" ? "Підписку оформлено (демо)" : "Дякуємо за підтримку! (демо)",
     donateType === "monthly"
       ? `У робочій версії тут відбудеться оформлення щомісячного платежу ${UAH.format(donateAmount)} ₴ через платіжний сервіс. Кошти щомісяця надходитимуть напряму на банківський рахунок ${s.name}.${fbMsg}${tipMsg}`
-      : `У робочій версії тут відкриється сторінка оплати. ${UAH.format(donateAmount)} ₴ буде зараховано на ескроу-рахунок збору для ${s.name}.${fbMsg}${tipMsg} Прогрес на сторінці вже оновлено.`
+      : `У робочій версії тут відкриється сторінка оплати. ${UAH.format(donateAmount)} ₴ буде зараховано на ескроу-рахунок збору для ${s.name}.${fbMsg}${tipMsg} Прогрес на сторінці вже оновлено.`,
+    shareRowHtml(profileUrl, `${s.name} — Поступ`, `${s.name} — поділіться профілем:`)
   );
   setTimeout(() => { initProfile(); }, 400);
 }
@@ -441,12 +443,12 @@ function fbReorder(changed) {
 })();
 
 /* ---------- Модалка ---------- */
-function openModal(emoji, title, text) {
+function openModal(emoji, title, text, extraHtml) {
   let back = document.getElementById("modal-back");
   if (!back) {
     back = document.createElement("div");
     back.id = "modal-back"; back.className = "modal-back";
-    back.innerHTML = `<div class="modal"><div class="emoji"></div><h3></h3><p></p>
+    back.innerHTML = `<div class="modal"><div class="emoji"></div><h3></h3><p></p><div class="modal-extra"></div>
       <button class="btn btn-primary" onclick="closeModal()">Зрозуміло</button></div>`;
     back.addEventListener("click", e => { if (e.target === back) closeModal(); });
     document.body.appendChild(back);
@@ -454,6 +456,7 @@ function openModal(emoji, title, text) {
   back.querySelector(".emoji").textContent = emoji;
   back.querySelector("h3").textContent = title;
   back.querySelector("p").textContent = text;
+  back.querySelector(".modal-extra").innerHTML = extraHtml || "";
   back.classList.add("open");
 }
 function closeModal() { document.getElementById("modal-back").classList.remove("open"); }
