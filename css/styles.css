@@ -319,6 +319,7 @@ a:hover { text-decoration: underline; }
 
 /* Панель донату (sticky) */
 .donate-panel { position: sticky; top: 88px; }
+.mobile-donate-bar { display: none; }
 .donate-panel .big-progress .fund-row b { font-size: 22px; }
 .amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
 .amount-btn {
@@ -539,8 +540,15 @@ button.field-toolbar:hover { background: var(--brand-soft); }
   .stats-band { grid-template-columns: repeat(2, 1fr); }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(2, 1fr); }
-  .profile-grid { grid-template-columns: 1fr; }
+  .profile-grid { grid-template-columns: 1fr; padding-bottom: 76px; }
   .donate-panel { position: static; }
+  .mobile-donate-bar {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,.94); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line); box-shadow: 0 -6px 20px rgba(20,25,60,.08);
+  }
+  .mobile-donate-bar .btn { width: 100%; }
   .filters-row, .filters-row-6 { grid-template-columns: 1fr 1fr; }
   .escrow-flow { grid-template-columns: 1fr; }
   .escrow-arrow { transform: rotate(90deg); justify-self: center; }

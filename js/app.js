@@ -172,6 +172,21 @@ function initProfile() {
     </div>` : ""}`;
 
   renderDonatePanel(s);
+  renderMobileDonateBar(s);
+}
+
+// На мобільному .donate-panel втрачає sticky-позицію (стає одноколонковий
+// лейаут) і опиняється в самому кінці довгої сторінки профілю. Ця плашка —
+// швидкий доступ до підтримки, не чекаючи прогортання через весь профіль.
+function renderMobileDonateBar(s) {
+  let bar = document.getElementById("mobile-donate-bar");
+  if (!bar) {
+    bar = document.createElement("div");
+    bar.id = "mobile-donate-bar";
+    bar.className = "mobile-donate-bar";
+    document.body.appendChild(bar);
+  }
+  bar.innerHTML = `<button class="btn btn-accent" onclick="document.getElementById('donate-panel').scrollIntoView({behavior:'smooth', block:'start'})">💛 Підтримати ${s.name.split(" ")[0]}</button>`;
 }
 
 let donateType = "once";
@@ -181,7 +196,7 @@ function renderDonatePanel(s) {
   donateType = "once"; donateAmount = 500;
   const p = pct(s);
   document.getElementById("p-side").innerHTML = `
-    <div class="panel donate-panel">
+    <div class="panel donate-panel" id="donate-panel">
       <div class="big-progress">
         <div class="progress ${p >= 100 ? "full" : ""}" style="height:10px"><i style="width:${p}%"></i></div>
         <div class="fund-row">
