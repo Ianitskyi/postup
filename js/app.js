@@ -192,8 +192,12 @@ function fillSelect(sel, items, placeholder) {
 
 /* ---------- Профіль ---------- */
 function initProfile() {
-  const id = new URLSearchParams(location.search).get("id") || DB.students[0].id;
-  const s = DB.students.find(x => x.id === id) || DB.students[0];
+  const params = new URLSearchParams(location.search);
+  const s = params.has("id") ? DB.students.find(x => x.id === params.get("id")) : DB.students[0];
+  if (!s) {
+    renderProfileNotFound();
+    return;
+  }
   const st = STATUS_META[s.status];
   document.title = `${s.name} — Поступ`;
 
@@ -257,6 +261,23 @@ function initProfile() {
 
   renderDonatePanel(s);
   renderMobileDonateBar(s);
+}
+
+// Якщо в посиланні вказано id, якого немає серед вступників (застаріле чи
+// зламане посилання) — показуємо чітке повідомлення, а не тихо підміняємо
+// на випадковий інший профіль.
+function renderProfileNotFound() {
+  document.title = "Профіль не знайдено — Поступ";
+  document.getElementById("p-hero").innerHTML = "";
+  document.getElementById("p-main").innerHTML = `
+    <div class="panel" style="text-align:center;padding:48px 26px">
+      <div style="font-size:40px;margin-bottom:10px">🔍</div>
+      <h2>Такого профілю немає</h2>
+      <p style="color:var(--ink-2);margin-top:8px">Можливо, посилання застаріле, або цей збір уже завершився і профіль знято з публікації.</p>
+      <a class="btn btn-primary" style="margin-top:20px" href="students.html">До каталогу вступників</a>
+    </div>`;
+  document.getElementById("p-side").innerHTML = "";
+  document.getElementById("mobile-donate-bar")?.remove();
 }
 
 // На мобільному .donate-panel втрачає sticky-позицію (стає одноколонковий

@@ -3,7 +3,7 @@
 // Читає позначені атрибутом data-edit елементи прямо з HTML-файлів на диску,
 // показує їх у зручному вигляді для редагування і зберігає зміни назад у ці ж файли.
 
-const EDIT_FILES = ["index.html", "how-it-works.html", "policies.html", "scholarships.html", "apply.html"];
+const EDIT_FILES = ["index.html", "how-it-works.html", "policies.html", "scholarships.html", "apply.html", "students.html"];
 const DATA_FILE = "js/data.js";
 
 const STUDENT_FIELD_LABELS = {
@@ -139,6 +139,10 @@ const FIELDS_CONFIG = [
   { file: "apply.html", key: "apply.step3.text", group: "Вступникам · Чотири кроки", label: "Крок 3 — опис" },
   { file: "apply.html", key: "apply.step4.title", group: "Вступникам · Чотири кроки", label: "Крок 4 — заголовок" },
   { file: "apply.html", key: "apply.step4.text", group: "Вступникам · Чотири кроки", label: "Крок 4 — опис" },
+
+  { file: "students.html", key: "stu.intro.eyebrow", group: "Каталог вступників · Вступ", label: "Надпис-рубрика" },
+  { file: "students.html", key: "stu.intro.title", group: "Каталог вступників · Вступ", label: "Заголовок" },
+  { file: "students.html", key: "stu.intro.sub", group: "Каталог вступників · Вступ", label: "Підзаголовок" },
 ];
 
 // FAQ-поля (how-it-works.html) описуємо окремо й одразу підмішуємо в конфіг,
