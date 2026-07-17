@@ -11,6 +11,54 @@ function avatarHtml(s, cls) {
   return `<div class="avatar ${cls || ""}" style="${avatarStyle(s)}">${inner}</div>`;
 }
 
+/* ---------- Кнопки "Поділитися" (профілі, стипендії) ---------- */
+function shareRowHtml(url, title) {
+  const u = encodeURIComponent(url);
+  const t = encodeURIComponent(title);
+  const tg = `https://t.me/share/url?url=${u}&text=${t}`;
+  const fb = `https://www.facebook.com/sharer/sharer.php?u=${u}`;
+  return `
+    <div class="share-row">
+      <span class="share-label">Поділитися:</span>
+      <a class="share-btn" href="${tg}" target="_blank" rel="noopener" title="Поділитися в Telegram">Telegram</a>
+      <a class="share-btn" href="${fb}" target="_blank" rel="noopener" title="Поділитися у Facebook">Facebook</a>
+      <button type="button" class="share-btn" onclick="copyShareLink('${url.replace(/'/g, "\\'")}', this)">Копіювати посилання</button>
+    </div>`;
+}
+function copyShareLink(url, btn) {
+  const done = () => {
+    const original = btn.textContent;
+    btn.textContent = "Скопійовано ✓";
+    btn.classList.add("copied");
+    setTimeout(() => { btn.textContent = original; btn.classList.remove("copied"); }, 1800);
+  };
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(done).catch(() => fallbackCopy(url, done));
+  } else {
+    fallbackCopy(url, done);
+  }
+}
+function fallbackCopy(url, done) {
+  const ta = document.createElement("textarea");
+  ta.value = url; ta.style.position = "fixed"; ta.style.opacity = "0";
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand("copy"); done(); } catch (e) {}
+  document.body.removeChild(ta);
+}
+// Коли хтось переходить за поділеним посиланням на конкретну стипендію (#sch-id),
+// прокручуємо до неї і на мить підсвічуємо, щоб було зрозуміло, яка саме мається на увазі.
+function highlightHashTarget() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+  const el = document.getElementById(hash);
+  if (!el || !el.classList.contains("sch-card")) return;
+  setTimeout(() => {
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.classList.add("highlight-pulse");
+    setTimeout(() => el.classList.remove("highlight-pulse"), 2200);
+  }, 50);
+}
+
 function studentCard(s) {
   const p = pct(s);
   const st = STATUS_META[s.status];
@@ -125,6 +173,7 @@ function initProfile() {
           ${s.levelType === "Коледж" ? '<span class="chip brand">🏫 Фаховий коледж</span>' : ""}
           ${s.categories.map(c => `<span class="chip">${c}</span>`).join("")}
         </div>
+        ${shareRowHtml(`${location.origin}${location.pathname}?id=${s.id}`, `${s.name} — Поступ`)}
       </div>
     </div>`;
 
@@ -309,7 +358,7 @@ function donate(studentId) {
 /* ---------- Стипендії ---------- */
 function initScholarships() {
   document.getElementById("sch-list").innerHTML = DB.scholarships.map(sc => `
-    <div class="sch-card">
+    <div class="sch-card" id="${sc.id}">
       <div class="sch-head">
         <div>
           <h3>${sc.name}</h3>
@@ -332,7 +381,9 @@ function initScholarships() {
       <button class="btn btn-ghost btn-sm" style="align-self:flex-start"
         onclick="openModal('💰','Поповнення фонду (демо)','У робочій версії тут можна доєднатися до фонду цієї стипендії разовим внеском або підпискою.')">
         Доєднатися до фонду</button>
+      ${shareRowHtml(`${location.origin}${location.pathname}#${sc.id}`, `${sc.name} — Поступ`)}
     </div>`).join("");
+  highlightHashTarget();
 }
 
 /* Той самий список стипендій, але для вступника — з кнопкою подачі заявки */
