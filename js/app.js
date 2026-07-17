@@ -466,8 +466,11 @@ function fbReorder(changed) {
 }
 
 /* ---------- Вибір вступника для пункту "передати іншому" ---------- */
+let pickerOthers = [];
+const PICKER_LIMIT = 30;
+
 function openStudentPicker(currentId) {
-  const others = DB.students.filter(x => x.id !== currentId && x.verified);
+  pickerOthers = DB.students.filter(x => x.id !== currentId && x.verified);
   let back = document.getElementById("picker-back");
   if (!back) {
     back = document.createElement("div");
@@ -478,17 +481,42 @@ function openStudentPicker(currentId) {
   back.innerHTML = `
     <div class="modal picker-modal">
       <h3>Кому передати кошти</h3>
-      <p style="margin-bottom:14px">Якщо кошти не знадобляться на контракт цього вступника, оберіть, кому їх передати:</p>
-      <div class="picker-list">
-        ${others.map(o => `
-          <button type="button" class="picker-row" onclick="chooseRedirectStudent('${o.id}', '${o.name.replace(/'/g, "\\'")}')">
-            ${avatarHtml(o)}
-            <div class="who"><b>${o.name}</b><span>${o.specialty}, ${o.university}</span></div>
-          </button>`).join("")}
-      </div>
+      <p>Якщо кошти не знадобляться на контракт цього вступника, оберіть, кому їх передати:</p>
+      <input type="text" class="picker-search" placeholder="Пошук за іменем, спеціальністю чи закладом освіти…" oninput="filterStudentPicker(this.value)">
+      <div class="picker-list" id="picker-list-body"></div>
       <button class="btn btn-light" style="margin-top:14px" onclick="closeStudentPicker()">Скасувати</button>
     </div>`;
+  renderPickerList(pickerOthers);
   back.classList.add("open");
+  setTimeout(() => back.querySelector(".picker-search")?.focus(), 50);
+}
+function renderPickerList(list) {
+  const body = document.getElementById("picker-list-body");
+  if (!body) return;
+  if (!list.length) {
+    body.innerHTML = `<div class="picker-empty">Нічого не знайдено. Спробуйте інший запит.</div>`;
+    return;
+  }
+  const shown = list.slice(0, PICKER_LIMIT);
+  body.innerHTML = shown.map(o => `
+    <button type="button" class="picker-row" onclick="chooseRedirectStudent('${o.id}', '${o.name.replace(/'/g, "\\'")}')">
+      ${avatarHtml(o)}
+      <div class="who"><b>${o.name}</b><span>${o.specialty}, ${o.university}</span></div>
+    </button>`).join("")
+    + (list.length > shown.length
+      ? `<div class="picker-more">Показано ${shown.length} із ${list.length} — уточніть пошук, щоб звузити список.</div>`
+      : "");
+}
+function filterStudentPicker(query) {
+  const q = query.trim().toLowerCase();
+  const filtered = q
+    ? pickerOthers.filter(o =>
+        o.name.toLowerCase().includes(q) ||
+        o.specialty.toLowerCase().includes(q) ||
+        o.university.toLowerCase().includes(q) ||
+        o.city.toLowerCase().includes(q))
+    : pickerOthers;
+  renderPickerList(filtered);
 }
 function closeStudentPicker() {
   document.getElementById("picker-back")?.classList.remove("open");
