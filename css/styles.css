@@ -185,15 +185,27 @@ a:hover { text-decoration: underline; }
 .chip.brand { background: var(--brand-soft); color: var(--brand); }
 .chip.accent { background: var(--accent-soft); color: var(--accent-ink); }
 .chip.good { background: var(--good-soft); color: var(--good); }
-.share-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.share-widget { position: relative; display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; }
 .share-label { font-size: 12.5px; color: var(--muted); font-weight: 600; }
-.share-btn {
-  display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 8px;
-  font-size: 12.5px; font-weight: 600; background: var(--surface-2); color: var(--ink-2);
-  border: 1px solid var(--line); text-decoration: none !important; cursor: pointer; font-family: inherit;
+.share-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px;
+  border-radius: 50%; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink-2);
+  cursor: pointer; padding: 0; flex: none;
 }
-.share-btn:hover { background: var(--brand-soft); color: var(--brand); border-color: var(--brand-soft); }
-.share-btn.copied { background: var(--good-soft); color: var(--good); border-color: var(--good-soft); }
+.share-icon-btn:hover { background: var(--brand-soft); color: var(--brand); border-color: var(--brand-soft); }
+.share-menu {
+  display: none; flex-direction: column; gap: 2px; position: absolute; top: calc(100% + 6px); left: 0; z-index: 20;
+  background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow-lg);
+  padding: 6px; min-width: 170px;
+}
+.share-menu.open { display: flex; }
+.share-menu a, .share-menu button {
+  display: block; width: 100%; padding: 8px 12px; border-radius: 8px; font-size: 13.5px; font-weight: 600;
+  color: var(--ink); text-decoration: none !important; background: none; border: none; text-align: left;
+  cursor: pointer; font-family: inherit;
+}
+.share-menu a:hover, .share-menu button:hover { background: var(--surface-2); }
+.share-menu button.copied { color: var(--good); }
 .status-pill { font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 99px; display: inline-flex; align-items: center; gap: 5px; }
 .st-applied { background: var(--surface-2); color: var(--ink-2); }
 .st-offer { background: var(--accent-soft); color: var(--accent-ink); }
@@ -437,8 +449,20 @@ a:hover { text-decoration: underline; }
 .modal h3 { font-size: 21px; margin: 12px 0 8px; }
 .modal p { color: var(--ink-2); font-size: 14.5px; }
 .modal .modal-extra:empty { display: none; }
-.modal .share-row { justify-content: center; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+.modal .share-widget { justify-content: center; width: 100%; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+.modal .share-menu { left: 50%; transform: translateX(-50%); }
 .modal .btn { margin-top: 20px; width: 100%; }
+.picker-modal { text-align: left; }
+.picker-modal h3, .picker-modal > p { text-align: center; }
+.picker-list { display: flex; flex-direction: column; gap: 6px; max-height: 360px; overflow-y: auto; }
+.picker-row {
+  display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--surface); cursor: pointer; width: 100%; font-family: inherit;
+}
+.picker-row:hover { background: var(--brand-soft); border-color: var(--brand-soft); }
+.picker-row .who { text-align: left; }
+.picker-row .who b { display: block; font-size: 14px; }
+.picker-row .who span { font-size: 12.5px; color: var(--muted); }
 
 /* ---------- Футер ---------- */
 .site-footer { background: #141a30; color: #aeb4cd; margin-top: 40px; padding: 48px 0 28px; }

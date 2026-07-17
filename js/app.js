@@ -11,19 +11,54 @@ function avatarHtml(s, cls) {
   return `<div class="avatar ${cls || ""}" style="${avatarStyle(s)}">${inner}</div>`;
 }
 
-/* ---------- Кнопки "Поділитися" (профілі, стипендії) ---------- */
-function shareRowHtml(url, title, label) {
+/* ---------- Віджет "Поділитися": іконка → спливне меню з варіантами ---------- */
+const SHARE_ICON_SVG = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/></svg>';
+
+function shareWidgetHtml(url, title, label) {
   const u = encodeURIComponent(url);
   const t = encodeURIComponent(title);
-  const tg = `https://t.me/share/url?url=${u}&text=${t}`;
-  const fb = `https://www.facebook.com/sharer/sharer.php?u=${u}`;
+  const safeUrl = url.replace(/'/g, "\\'");
+  const safeTitle = title.replace(/'/g, "\\'");
+  const links = [
+    { name: "Telegram", href: `https://t.me/share/url?url=${u}&text=${t}` },
+    { name: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${u}` },
+    { name: "WhatsApp", href: `https://wa.me/?text=${t}%20${u}` },
+    { name: "X (Twitter)", href: `https://twitter.com/intent/tweet?url=${u}&text=${t}` },
+    { name: "Email", href: `mailto:?subject=${t}&body=${u}` }
+  ];
   return `
-    <div class="share-row">
-      <span class="share-label">${label || "Поділитися:"}</span>
-      <a class="share-btn" href="${tg}" target="_blank" rel="noopener" title="Поділитися в Telegram">Telegram</a>
-      <a class="share-btn" href="${fb}" target="_blank" rel="noopener" title="Поділитися у Facebook">Facebook</a>
-      <button type="button" class="share-btn" onclick="copyShareLink('${url.replace(/'/g, "\\'")}', this)">Копіювати посилання</button>
+    <div class="share-widget">
+      ${label ? `<span class="share-label">${label}</span>` : ""}
+      <button type="button" class="share-icon-btn" aria-label="Поділитися" title="Поділитися"
+        onclick="handleShareClick(this,'${safeUrl}','${safeTitle}')">${SHARE_ICON_SVG}</button>
+      <div class="share-menu">
+        ${links.map(l => `<a href="${l.href}" target="_blank" rel="noopener">${l.name}</a>`).join("")}
+        <button type="button" onclick="copyShareLink('${safeUrl}', this)">Копіювати посилання</button>
+      </div>
     </div>`;
+}
+function handleShareClick(btn, url, title) {
+  if (navigator.share) {
+    navigator.share({ title, url }).catch(() => {});
+  } else {
+    toggleShareMenu(btn);
+  }
+}
+function toggleShareMenu(btn) {
+  const widget = btn.closest(".share-widget");
+  const menu = widget.querySelector(".share-menu");
+  const isOpen = menu.classList.contains("open");
+  document.querySelectorAll(".share-menu.open").forEach(m => m.classList.remove("open"));
+  if (isOpen) return;
+  menu.classList.add("open");
+  setTimeout(() => {
+    document.addEventListener("click", function closeOnce(e) {
+      if (!widget.contains(e.target)) {
+        menu.classList.remove("open");
+        document.removeEventListener("click", closeOnce);
+      }
+    });
+  }, 0);
 }
 function copyShareLink(url, btn) {
   const done = () => {
@@ -173,7 +208,7 @@ function initProfile() {
           ${s.levelType === "Коледж" ? '<span class="chip brand">🏫 Фаховий коледж</span>' : ""}
           ${s.categories.map(c => `<span class="chip">${c}</span>`).join("")}
         </div>
-        ${shareRowHtml(`${location.origin}${location.pathname}?id=${s.id}`, `${s.name} — Поступ`)}
+        ${shareWidgetHtml(`${location.origin}${location.pathname}?id=${s.id}`, `${s.name} — Поступ`)}
       </div>
     </div>`;
 
@@ -241,8 +276,14 @@ function renderMobileDonateBar(s) {
 let donateType = "once";
 let donateAmount = 500;
 
+let redirectChoiceId = null;
+let redirectChoiceName = null;
+let currentProfileId = null;
+
 function renderDonatePanel(s) {
   donateType = "once"; donateAmount = 500;
+  redirectChoiceId = null; redirectChoiceName = null;
+  currentProfileId = s.id;
   const p = pct(s);
   document.getElementById("p-side").innerHTML = `
     <div class="panel donate-panel" id="donate-panel">
@@ -270,7 +311,7 @@ function renderDonatePanel(s) {
       <div class="fallback-choice">
         <div class="fc-label">Якщо кошти не знадобляться на контракт (не вступив, недозбір, пройшов на бюджет чи отримав інший грант) — розставте пріоритети:</div>
         <div class="fb-row"><select class="fb-pr" data-key="stipend" onchange="fbReorder(this)" data-prev="1"><option selected>1</option><option>2</option><option>3</option></select><span>Залишити цьому студенту — щомісячною стипендією на навчання (житло, харчування, матеріали)</span></div>
-        <div class="fb-row"><select class="fb-pr" data-key="redirect" onchange="fbReorder(this)" data-prev="2"><option>1</option><option selected>2</option><option>3</option></select><span>Передати іншому вступнику на мій вибір</span></div>
+        <div class="fb-row"><select class="fb-pr" data-key="redirect" onchange="fbReorder(this)" data-prev="2"><option>1</option><option selected>2</option><option>3</option></select><span>Передати іншому вступнику — <a href="#" id="redirect-choice-label" onclick="openStudentPicker('${s.id}');return false">оберіть кого саме</a></span></div>
         <div class="fb-row"><select class="fb-pr" data-key="refund" onchange="fbReorder(this)" data-prev="3"><option>1</option><option>2</option><option selected>3</option></select><span>Повернути мені — 100%, без жодних комісій</span></div>
       </div>
 
@@ -334,7 +375,7 @@ function donate(studentId) {
   const tipMsg = tip ? ` Окремо ${UAH.format(tip)} ₴ піде на роботу платформи — дякуємо!` : "";
   const FB_LABELS = {
     stipend: "стипендія цьому студенту",
-    redirect: "інший вступник",
+    redirect: redirectChoiceName ? `передати — ${redirectChoiceName}` : "інший вступник (платформа обере за подібними критеріями)",
     refund: "повернення 100%"
   };
   const prio = [...document.querySelectorAll(".fallback-choice select")]
@@ -352,7 +393,7 @@ function donate(studentId) {
     donateType === "monthly"
       ? `У робочій версії тут відбудеться оформлення щомісячного платежу ${UAH.format(donateAmount)} ₴ через платіжний сервіс. Кошти щомісяця надходитимуть напряму на банківський рахунок ${s.name}.${fbMsg}${tipMsg}`
       : `У робочій версії тут відкриється сторінка оплати. ${UAH.format(donateAmount)} ₴ буде зараховано на ескроу-рахунок збору для ${s.name}.${fbMsg}${tipMsg} Прогрес на сторінці вже оновлено.`,
-    shareRowHtml(profileUrl, `${s.name} — Поступ`, `${s.name} — поділіться профілем:`)
+    shareWidgetHtml(profileUrl, `${s.name} — Поступ`, `${s.name} — поділіться профілем:`)
   );
   setTimeout(() => { initProfile(); }, 400);
 }
@@ -383,7 +424,7 @@ function initScholarships() {
       <button class="btn btn-ghost btn-sm" style="align-self:flex-start"
         onclick="openModal('💰','Поповнення фонду (демо)','У робочій версії тут можна доєднатися до фонду цієї стипендії разовим внеском або підпискою.')">
         Доєднатися до фонду</button>
-      ${shareRowHtml(`${location.origin}${location.pathname}#${sc.id}`, `${sc.name} — Поступ`)}
+      ${shareWidgetHtml(`${location.origin}${location.pathname}#${sc.id}`, `${sc.name} — Поступ`)}
     </div>`).join("");
   highlightHashTarget();
 }
@@ -422,6 +463,42 @@ function fbReorder(changed) {
   const dup = sels.find(s => s !== changed && s.value === changed.value);
   if (dup) dup.value = changed.dataset.prev;
   sels.forEach(s => (s.dataset.prev = s.value));
+}
+
+/* ---------- Вибір вступника для пункту "передати іншому" ---------- */
+function openStudentPicker(currentId) {
+  const others = DB.students.filter(x => x.id !== currentId && x.verified);
+  let back = document.getElementById("picker-back");
+  if (!back) {
+    back = document.createElement("div");
+    back.id = "picker-back"; back.className = "modal-back";
+    back.addEventListener("click", e => { if (e.target === back) closeStudentPicker(); });
+    document.body.appendChild(back);
+  }
+  back.innerHTML = `
+    <div class="modal picker-modal">
+      <h3>Кому передати кошти</h3>
+      <p style="margin-bottom:14px">Якщо кошти не знадобляться на контракт цього вступника, оберіть, кому їх передати:</p>
+      <div class="picker-list">
+        ${others.map(o => `
+          <button type="button" class="picker-row" onclick="chooseRedirectStudent('${o.id}', '${o.name.replace(/'/g, "\\'")}')">
+            ${avatarHtml(o)}
+            <div class="who"><b>${o.name}</b><span>${o.specialty}, ${o.university}</span></div>
+          </button>`).join("")}
+      </div>
+      <button class="btn btn-light" style="margin-top:14px" onclick="closeStudentPicker()">Скасувати</button>
+    </div>`;
+  back.classList.add("open");
+}
+function closeStudentPicker() {
+  document.getElementById("picker-back")?.classList.remove("open");
+}
+function chooseRedirectStudent(id, name) {
+  redirectChoiceId = id;
+  redirectChoiceName = name;
+  const label = document.getElementById("redirect-choice-label");
+  if (label) { label.textContent = name; label.setAttribute("onclick", `openStudentPicker('${currentProfileId}');return false`); }
+  closeStudentPicker();
 }
 
 /* ---------- Банер cookies ---------- */
